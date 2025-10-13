@@ -29,7 +29,25 @@
     .fade-in.show { transform: none; opacity: 1; }
     .pill { border-radius:999px; padding:6px 12px; font-weight:600; }
     /* logo container */
-    .logo-circle { width:92px; height:92px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(180deg,var(--brand-yellow), #ffd168); box-shadow: 0 8px 20px rgba(160,120,40,0.08); border:6px solid rgba(10,15,10,0.06); }
+.logo-circle {
+  width: 92px;           /* linha 34 */
+  height: 92px;          /* linha 35 */
+  border-radius: 50%;    /* linha 36: deixa circular */
+  display: flex;         /* linha 37 */
+  align-items: center;   /* linha 38 */
+  justify-content: center; /* linha 39 */
+  background: linear-gradient(180deg, var(--brand-yellow), #ffd168); /* linha 40 */
+  box-shadow: 0 8px 20px rgba(160,120,40,0.08); /* linha 41 */
+  border: 6px solid rgba(10,15,10,0.06);       /* linha 42 */
+  overflow: hidden;      /* linha 43: garante que a imagem fique dentro do círculo */
+}
+.logo-circle img {
+  width: 100%;           /* linha 46 */
+  height: 100%;          /* linha 47 */
+  object-fit: cover;     /* linha 48: preenche o círculo */
+  border-radius: 50%;    /* linha 49: imagem circular */
+}
+
     /* footer link hover */
     a.cta:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(16,24,40,0.08); }
     /* small helpers */
@@ -67,6 +85,7 @@
     </button>
   </nav>
 
+  <!-- HERO -->
   <!-- HERO -->
 <header class="hero-wave">
   <div class="max-w-6xl mx-auto px-6 py-12 lg:py-20">
@@ -148,6 +167,7 @@
     </div>
   </div>
 </header>
+
 
         <!-- Visual / Product panel -->
         <div class="fade-in" id="heroVisual">
@@ -530,4 +550,3 @@
 
 </body>
 </html>
-
