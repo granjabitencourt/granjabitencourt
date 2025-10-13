@@ -512,51 +512,117 @@
     });
 
     // --- Charts (same as original) ---
-    // Freshness mini chart
-    try {
-      new Chart(document.getElementById('freshnessChart'), {
-        type: 'doughnut',
-        data: {
-          labels:['Frescor','Estoque'],
-          datasets:[{
-            data:[85,15],
-            backgroundColor:[getComputedStyle(document.documentElement).getPropertyValue('--brand-green') || '#2F7A3F', '#F2F4F7']
-          }]
-        },
-        options:{plugins:{legend:{display:false}}, cutout: '70%'}
-      });
+    // --- Charts (sincronizados e com comparativo nutricional) ---
+try {
+  const brandGreen = getComputedStyle(document.documentElement).getPropertyValue('--brand-green') || '#2F7A3F';
+  const brandYellow = getComputedStyle(document.documentElement).getPropertyValue('--brand-yellow') || '#FFC947';
 
-      new Chart(document.getElementById('nutritionChart'), {
-        type: 'bar',
-        data:{
-          labels:['Ômega-3','Vitaminas (A,E,D)','Colesterol'],
-          datasets:[
-            { label:'Ovo Caipira', data:[9,8.5,6.8], backgroundColor:getComputedStyle(document.documentElement).getPropertyValue('--brand-green') || '#2F7A3F' },
-            { label:'Ovo Comum', data:[5,6,8], backgroundColor:'#F0C089' }
-          ]
-        },
-        options:{ responsive:true, maintainAspectRatio:false, scales:{ y:{ beginAtZero:true } } }
-      });
+  // Dados iniciais de produção
+  const productionData = [220, 230, 210, 245, 260, 240, 255];
 
-      new Chart(document.getElementById('productionChart'), {
-        type: 'line',
-        data:{
-          labels:['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-          datasets:[{
-            label:'Produção (unidades)',
-            data:[220, 230, 210, 245, 260, 240, 255],
-            fill:true,
-            tension:0.3,
-            backgroundColor:'rgba(47,122,63,0.12)',
-            borderColor:getComputedStyle(document.documentElement).getPropertyValue('--brand-green') || '#2F7A3F',
-            pointBackgroundColor:getComputedStyle(document.documentElement).getPropertyValue('--brand-yellow') || '#FFC947'
-          }]
-        },
-        options:{ responsive:true, maintainAspectRatio:false }
-      });
-    } catch (err) {
-      console.warn('Charts init failed (Chart.js missing or canvas not present):', err);
+  // Função para calcular frescos e estoque
+  function calculateFreshnessData(prodData) {
+    const lastTwoDays = prodData.slice(-2);
+    const freshEggs = lastTwoDays.reduce((a, b) => a + b, 0);
+    const total = prodData.reduce((a, b) => a + b, 0);
+    const stockEggs = total - freshEggs;
+    const freshPercent = (freshEggs / total) * 100;
+    const stockPercent = 100 - freshPercent;
+    return [freshPercent, stockPercent];
+  }
+
+  // 1️⃣ Gráfico Comparativo Nutricional
+  new Chart(document.getElementById('nutritionChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Ômega-3', 'Vitaminas (A,E,D)', 'Colesterol'],
+      datasets: [
+        { label: 'Ovo Caipira', data: [9, 8.5, 6.8], backgroundColor: brandGreen },
+        { label: 'Ovo Comum', data: [5, 6, 8], backgroundColor: '#F0C089' }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: { y: { beginAtZero: true } },
+      plugins: {
+        legend: { position: 'bottom' },
+        title: { display: true, text: 'Comparativo Nutricional' }
+      }
     }
+  });
+
+  // 2️⃣ Gráfico de Produção (últimos 7 dias)
+  const productionChart = new Chart(document.getElementById('productionChart'), {
+    type: 'line',
+    data: {
+      labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+      datasets: [{
+        label: 'Produção (unidades)',
+        data: productionData,
+        fill: true,
+        tension: 0.3,
+        backgroundColor: 'rgba(47,122,63,0.12)',
+        borderColor: brandGreen,
+        pointBackgroundColor: brandYellow
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: true, position: 'bottom' },
+        title: { display: true, text: 'Produção dos últimos 7 dias' }
+      },
+      onClick: () => updateFreshnessChart()
+    }
+  });
+
+  // 3️⃣ Gráfico de Ovos Frescos / Estoque (doughnut sincronizado)
+  const freshnessChart = new Chart(document.getElementById('freshnessChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Frescos', 'Em estoque'],
+      datasets: [{
+        data: calculateFreshnessData(productionData),
+        backgroundColor: [brandGreen, '#E2E8F0']
+      }]
+    },
+    options: {
+      responsive: true,
+      cutout: '70%',
+      plugins: {
+        legend: { display: true, position: 'bottom' },
+        title: { display: true, text: 'Proporção de ovos frescos e em estoque' },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.label}: ${ctx.parsed.toFixed(1)}%`
+          }
+        }
+      }
+    }
+  });
+
+  // 🔄 Sincronização automática
+  function updateFreshnessChart() {
+    const newData = productionChart.data.datasets[0].data;
+    const [freshPercent, stockPercent] = calculateFreshnessData(newData);
+    freshnessChart.data.datasets[0].data = [freshPercent, stockPercent];
+    freshnessChart.update();
+  }
+
+  // 🕐 Atualização simulada a cada 5 segundos (para visual)
+  setInterval(() => {
+    const newData = productionChart.data.datasets[0].data.map(v => v + Math.floor(Math.random() * 10 - 5));
+    productionChart.data.datasets[0].data = newData;
+    productionChart.update();
+    updateFreshnessChart();
+  }, 5000);
+
+} catch (err) {
+  console.warn('Erro ao inicializar gráficos sincronizados:', err);
+}
+
 
     // small mobile button placeholder
     const mobileBtn = document.getElementById('mobileBtn');
