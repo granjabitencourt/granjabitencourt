@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel Administrativo — Granja Bitencourt</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div class="max-w-lg mx-auto my-10 p-6 bg-white rounded-xl shadow-md">
+    <h1 class="text-2xl font-bold mb-4 text-center text-green-800">Painel Administrativo 🐔</h1>
+
+    <p class="text-sm text-gray-600 mb-4">Atualize a produção semanal de ovos e envie para o GitHub Pages.</p>
+
+    <div class="space-y-3">
+      <label class="block text-sm font-medium">Token do GitHub</label>
+      <input id="token" type="password" class="w-full p-2 border rounded" placeholder="Cole aqui seu token pessoal">
+
+      <label class="block text-sm font-medium">Repositório (ex: usuario/meu-site)</label>
+      <input id="repo" class="w-full p-2 border rounded" placeholder="usuario/nome-do-repositorio">
+
+      <label class="block text-sm font-medium">Valores semanais (Seg a Dom)</label>
+      <input id="values" class="w-full p-2 border rounded" placeholder="Ex: 210,230,220,250,245,260,255">
+
+      <button id="updateBtn" class="w-full bg-green-700 text-white py-2 rounded hover:bg-green-800">Atualizar no GitHub</button>
+    </div>
+
+    <div id="msg" class="mt-4 text-sm text-center"></div>
+  </div>
+
+  <script>
+    document.getElementById('updateBtn').addEventListener('click', async () => {
+      const token = document.getElementById('token').value.trim();
+      const repo = document.getElementById('repo').value.trim();
+      const values = document.getElementById('values').value.trim();
+      const msg = document.getElementById('msg');
+
+      if(!token || !repo || !values) {
+        msg.textContent = 'Preencha todos os campos.';
+        msg.className = 'text-red-600 text-sm text-center mt-3';
+        return;
+      }
+
+      // Monta o novo conteúdo
+      const newLine = `const productionData = [${values}];`;
+
+      // Busca o arquivo index.html
+      const res = await fetch(`https://api.github.com/repos/${repo}/contents/index.html`, {
+        headers: { Authorization: `token ${token}` }
+      });
+      const file = await res.json();
+      const content = atob(file.content);
+
+      // Substitui a linha antiga de produção
+      const updated = content.replace(/const productionData = \\[[^\\]]+\\];/, newLine);
+
+      // Envia de volta ao GitHub
+      const body = {
+        message: 'Atualiza dados semanais de produção',
+        content: btoa(updated),
+        sha: file.sha
+      };
+
+      const update = await fetch(`https://api.github.com/repos/${repo}/contents/index.html`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `token ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+
+      if(update.ok) {
+        msg.textContent = '✅ Dados atualizados com sucesso!';
+        msg.className = 'text-green-600 text-sm text-center mt-3';
+      } else {
+        msg.textContent = '❌ Erro ao atualizar. Verifique o token e o repositório.';
+        msg.className = 'text-red-600 text-sm text-center mt-3';
+      }
+    });
+  </script>
+</body>
+</html>
