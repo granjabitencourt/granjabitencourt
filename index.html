@@ -58,12 +58,16 @@
 <body class="antialiased">
 
   <!-- NAV -->
-  <nav class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-    <div class="flex items-center gap-4">
-      <div class="logo-circle">
-        <img src="logo.png" alt="Logo Granja Bitencourt" style="height:68px; object-fit:contain;">
-      </div>
-      <div>
+  <div class="fade-in" id="heroVisual">
+        <div class="card p-6 lg:p-10">
+          <div class="flex flex-col gap-4">
+            <div class="rounded-lg overflow-hidden" style="background:linear-gradient(180deg,#fff 0%, #fffbf2 100%);">
+              <div class="p-6">
+                <div class="flex items-center gap-4">
+                  <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-[var(--brand-yellow)] shadow-lg">
+                    <img src="logo.png" alt="Logo Granja Bitencourt" class="w-full h-full object-cover">
+                  </div>
+                  <div>
         <div class="text-xl font-extrabold text-[var(--brand-dark)] leading-tight">Granja Bitencourt</div>
         <div class="text-xs muted -mt-1">Ovos caipiras — Nova Lima</div>
       </div>
@@ -677,6 +681,7 @@ try {
 
 </body>
 </html>
+
 
 
 
