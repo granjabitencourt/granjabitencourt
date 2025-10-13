@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Granja Bitencourt — Ovos Caipiras</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root{
+      --brand-dark:#0A3F36; /* deep brand green */
+      --brand-green:#2F7A3F; 
+      --brand-muted:#4D8076;
+      --brand-yellow:#FFC947;
+      --egg-brown:#a15d3f;
+      --bg:#FEFBF6;
+    }
+    body{ background:var(--bg); font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #0f172a; }
+    /* subtle glass card */
+    .card { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85)); box-shadow: 0 8px 30px rgba(10,10,10,0.08); border-radius: 14px; }
+    /* hero wave */
+    .hero-wave { background: radial-gradient(1200px 350px at 10% 10%, rgba(255,201,71,0.08), transparent 10%), radial-gradient(900px 300px at 90% 70%, rgba(47,122,63,0.04), transparent 10%); }
+    /* smooth entrance */
+    .fade-in { transform: translateY(10px); opacity: 0; transition: all 560ms cubic-bezier(.2,.9,.3,1); }
+    .fade-in.show { transform: none; opacity: 1; }
+    .pill { border-radius:999px; padding:6px 12px; font-weight:600; }
+    /* logo container */
+    .logo-circle { width:92px; height:92px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(180deg,var(--brand-yellow), #ffd168); box-shadow: 0 8px 20px rgba(160,120,40,0.08); border:6px solid rgba(10,15,10,0.06); }
+    /* footer link hover */
+    a.cta:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(16,24,40,0.08); }
+    /* small helpers */
+    .muted { color: #475569; }
+    /* responsive small tweaks */
+    @media (max-width:640px){
+      .hero-title{ font-size:28px; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAV -->
+  <nav class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="logo-circle">
+        <!-- Replace 'logo.png' with your logo filename -->
+        <img src="logo.png" alt="Logo Granja Bitencourt" style="height:68px; object-fit:contain;">
+      </div>
+      <div>
+        <div class="text-xl font-extrabold text-[var(--brand-dark)] leading-tight">Granja Bitencourt</div>
+        <div class="text-xs muted -mt-1">Ovos caipiras — Nova Lima</div>
+      </div>
+    </div>
+
+    <div class="hidden md:flex items-center gap-4">
+      <a href="#sobre" class="muted hover:text-[var(--brand-dark)]">Sobre</a>
+      <a href="#produtos" class="muted hover:text-[var(--brand-dark)]">Produtos</a>
+      <a href="#sustentabilidade" class="muted hover:text-[var(--brand-dark)]">Sustentabilidade</a>
+      <a href="#contato" class="pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-4 py-2">Peça pelo WhatsApp</a>
+    </div>
+
+    <button id="mobileBtn" class="md:hidden bg-white p-2 rounded-lg shadow-sm">
+      <svg width="20" height="20" fill="none" stroke="currentColor"><path d="M3 6h18M3 12h18M3 18h18" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero-wave">
+    <div class="max-w-6xl mx-auto px-6 py-12 lg:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div class="fade-in" id="heroText">
+          <div class="card p-6 lg:p-10">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:linear-gradient(180deg,var(--brand-green), #2b6a34);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 3c.7 0 1.4.1 2 .4 1.3.6 2.4 1.7 3 3 .3.6.4 1.3.4 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-[var(--brand-muted)] uppercase font-semibold">Direto da Granja</div>
+                <div class="text-2xl font-extrabold text-[var(--brand-dark)]">Ovos Caipiras Fresquinhos</div>
+              </div>
+            </div>
+
+            <h1 class="hero-title text-4xl lg:text-5xl font-extrabold text-[var(--brand-dark)] mt-6 leading-tight">
+              Sabor mais intenso. Mais nutrientes. <span class="text-[var(--brand-yellow)]">100% local</span>.
+            </h1>
+
+            <p class="muted mt-4 max-w-xl">Galinha criada livre, coleta diária e entrega rápida para Nova Lima. Apoie o produtor local e leve para casa ovos mais saborosos e nutritivos.</p>
+
+            <div class="mt-6 flex gap-3 flex-wrap">
+              <a id="orderBtn" href="#" class="cta pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-5 py-3 inline-flex items-center gap-3">
+                Peça agora pelo WhatsApp
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2h-1l-1 2-3-3v-1h1a2 2 0 0 1 2-2h4z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="#produtos" class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] font-medium px-5 py-3">Ver produtos</a>
+            </div>
+
+            <div class="mt-6 grid grid-cols-2 gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow">
+                  <svg width="18" height="18"><circle cx="9" cy="9" r="6" fill="var(--brand-yellow)"/></svg>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold">Entrega local</div>
+                  <div class="text-xs muted">Nova Lima e região</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow">
+                  <svg width="18" height="18"><rect width="16" height="10" rx="2" fill="var(--egg-brown)"/></svg>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold">Frescor diário</div>
+                  <div class="text-xs muted">Coleta e expedição rápida</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Visual / Product panel -->
+        <div class="fade-in" id="heroVisual">
+          <div class="card p-6 lg:p-10">
+            <div class="flex flex-col gap-4">
+              <div class="rounded-lg overflow-hidden" style="background:linear-gradient(180deg,#fff 0%, #fffbf2 100%);">
+                <!-- hero visual composition -->
+                <div class="p-6">
+                  <div class="flex items-center gap-4">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:var(--brand-yellow); border:6px solid rgba(10,15,10,0.06);">
+                      <img src="logo.png" alt="logo" style="height:64px; object-fit:contain;">
+                    </div>
+                    <div>
+                      <div class="text-lg font-bold text-[var(--brand-dark)]">Granja Bitencourt</div>
+                      <div class="text-sm muted">Ovos caipiras — sabor autêntico</div>
+                    </div>
+                  </div>
+
+                  <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <div class="text-xs muted">Preço sugerido</div>
+                      <div class="text-xl font-extrabold text-[var(--brand-dark)] mt-1">R$ 18 / dúzia</div>
+                      <div class="text-xs muted mt-2">Embalagem sustentável • Entrega diária</div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <div class="text-xs muted">Disponibilidade</div>
+                      <div class="text-xl font-bold text-[var(--brand-green)] mt-1">Produção diária</div>
+                      <div class="text-xs muted mt-2">Pedidos por WhatsApp • Retirada e entrega</div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="p-6 border-t border-gray-100">
+                  <canvas id="freshnessChart" height="220"></canvas>
+                </div>
+              </div>
+
+              <div class="mt-4 text-sm muted">* Valores e disponibilidade sujeitos a confirmação via WhatsApp.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- KEY SECTIONS -->
+  <main class="max-w-6xl mx-auto px-6 py-12">
+
+    <!-- Produtos / Highlights -->
+    <section id="produtos" class="fade-in card p-6 lg:p-10 mb-8">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-extrabold text-[var(--brand-dark)]">Nossos Produtos</h2>
+          <p class="muted mt-2">Ovos caipiras, por qualidade e sabor — embalagens sustentáveis e entregas locais.</p>
+        </div>
+        <div class="hidden md:block">
+          <a href="#contato" class="pill border border-[var(--brand-green)] text-[var(--brand-green)] px-4 py-2">Quero receber novidades</a>
+        </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <article class="p-4 rounded-lg border border-gray-100">
+          <div class="flex items-start gap-3">
+            <div class="w-14 h-14 rounded-md flex items-center justify-center" style="background:linear-gradient(180deg,var(--egg-brown), #b7633f);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="12" rx="7" ry="9" fill="white" /></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-[var(--brand-dark)]">Ovo Dúzia — Caipira</h3>
+              <p class="muted text-sm mt-1">Embalagem 12 unidades — ração natural e manejo livre.</p>
+              <div class="mt-3 flex gap-2">
+                <button class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1" onclick="openOrder('Dúzia — Caipira')">Pedir</button>
+                <button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted">Detalhes</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="p-4 rounded-lg border border-gray-100">
+          <div class="flex items-start gap-3">
+            <div class="w-14 h-14 rounded-md flex items-center justify-center" style="background:linear-gradient(180deg,var(--brand-green), #2a6a34);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12h18" stroke="white" stroke-width="2"/></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-[var(--brand-dark)]">Ovo Caixa — 30 un.</h3>
+              <p class="muted text-sm mt-1">Perfeito para pequeno comércio e eventos locais.</p>
+              <div class="mt-3 flex gap-2">
+                <button class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1" onclick="openOrder('Caixa 30')">Pedir</button>
+                <button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted">Detalhes</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="p-4 rounded-lg border border-gray-100">
+          <div class="flex items-start gap-3">
+            <div class="w-14 h-14 rounded-md flex items-center justify-center" style="background:linear-gradient(180deg,var(--brand-yellow), #ffd57a);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3l18 18" stroke="#6b3e28" stroke-width="2"/></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-[var(--brand-dark)]">Assinatura Semanal</h3>
+              <p class="muted text-sm mt-1">Receba ovos frescos toda semana em sua casa.</p>
+              <div class="mt-3 flex gap-2">
+                <button class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1" onclick="openOrder('Assinatura Semanal')">Pedir</button>
+                <button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted">Detalhes</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Charts / Interactive -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      <div class="card p-6">
+        <h3 class="text-lg font-bold">Comparativo Nutricional (simulado)</h3>
+        <p class="muted text-sm mt-2">Valores comparativos ilustrativos — consulte rótulos e análises oficiais para dados laboratoriais.</p>
+        <div class="mt-4">
+          <canvas id="nutritionChart" height="260"></canvas>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <h3 class="text-lg font-bold">Produção diária (últimos 7 dias)</h3>
+        <p class="muted text-sm mt-2">Monitore a produção e verifique dias de pico.</p>
+        <div class="mt-4">
+          <canvas id="productionChart" height="260"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sustainability -->
+    <section id="sustentabilidade" class="card p-6 mb-8">
+      <div class="flex flex-col lg:flex-row gap-6 items-center">
+        <div class="flex-1">
+          <h3 class="text-2xl font-extrabold">Sustentabilidade e Boas Práticas</h3>
+          <p class="muted mt-2">Adotamos práticas de biossegurança, reaproveitamento de cama e compostagem para reduzir impacto ambiental.</p>
+
+          <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <li class="p-3 rounded-md border border-gray-100">
+              <div class="font-semibold">Compostagem</div>
+              <div class="text-xs muted">Transformamos cama em adubo seguro para hortas locais.</div>
+            </li>
+            <li class="p-3 rounded-md border border-gray-100">
+              <div class="font-semibold">Economia Circular</div>
+              <div class="text-xs muted">Prioridade a fornecedores locais e embalagens reutilizáveis.</div>
+            </li>
+            <li class="p-3 rounded-md border border-gray-100">
+              <div class="font-semibold">Saúde Animal</div>
+              <div class="text-xs muted">Boas práticas e monitoramento diário para aves saudáveis.</div>
+            </li>
+            <li class="p-3 rounded-md border border-gray-100">
+              <div class="font-semibold">Transparência</div>
+              <div class="text-xs muted">Relatórios e controles internos conforme o manual da granja.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="w-full lg:w-72">
+          <div class="p-4 rounded-lg text-center" style="background:linear-gradient(180deg, rgba(47,122,63,0.06), rgba(255,201,71,0.03));">
+            <div class="text-sm muted">Certificado Interno</div>
+            <div class="text-3xl font-extrabold text-[var(--brand-green)] mt-2">Boas Práticas</div>
+            <div class="text-xs muted mt-2">Auditorias internas, controle de qualidade e rastreabilidade.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick manual summary (non-confidential) -->
+    <section class="card p-6 mb-8" id="sobre">
+      <h3 class="text-xl font-extrabold">Sobre a Granja</h3>
+      <p class="muted mt-2">Produzimos ovos caipiras em Nova Lima com foco em bem-estar animal e qualidade. Nosso manual interno padroniza manejo, biossegurança e práticas financeiras para manter a produção confiável e sustentável.</p>
+      <div class="mt-4 text-sm muted">Leia o manual completo na sede ou solicite via WhatsApp para informações administrativas.</div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contato" class="card p-6 mb-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+        <div>
+          <h3 class="text-2xl font-extrabold">Fale Conosco</h3>
+          <p class="muted mt-2">Pedidos e atendimento via WhatsApp — rápido e pessoal.</p>
+
+          <div class="mt-4 space-y-3">
+            <a id="whatsMain" href="https://wa.me/5531996605864" target="_blank" class="pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-5 py-3 inline-flex items-center gap-3">
+              Abrir WhatsApp (31) 99660-5864
+            </a>
+
+            <div class="text-sm muted">Ou envie um e-mail para <strong>contato@granjabitencourt.com</strong> (opcional)</div>
+          </div>
+        </div>
+
+        <div>
+          <form id="contactForm" class="space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <input name="nome" required class="w-full p-3 rounded border border-gray-200" placeholder="Seu nome">
+              <input name="telefone" required class="w-full p-3 rounded border border-gray-200" placeholder="Telefone (WhatsApp)">
+            </div>
+            <textarea name="mensagem" rows="3" class="w-full p-3 rounded border border-gray-200" placeholder="Mensagem / pedido (ex: 2 dúzias, entrega amanhã)"></textarea>
+            <div class="flex gap-3">
+              <button type="submit" class="pill bg-[var(--brand-green)] text-white px-4 py-2">Enviar pedido (preparar WhatsApp)</button>
+              <button type="reset" class="pill border border-gray-200 px-4 py-2">Limpar</button>
+            </div>
+            <div class="text-xs muted">Ao enviar, preparamos uma mensagem pronta para o WhatsApp.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[var(--brand-dark)] text-white py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <div class="font-extrabold">Granja Bitencourt</div>
+        <div class="text-sm mt-1 muted">Nova Lima • Produção local e sustentável</div>
+      </div>
+
+      <div class="text-sm muted">© <span id="year"></span> Granja Bitencourt — Todos os direitos reservados</div>
+
+      <div class="flex items-center gap-3">
+        <a href="https://www.instagram.com/GranjaBitencourt" target="_blank" class="text-white text-sm">Instagram</a>
+        <a href="https://wa.me/5531996605864" target="_blank" class="text-white text-sm">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal / Order -->
+  <div id="orderModal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+    <div class="w-full max-w-md p-6 card">
+      <div class="flex items-start justify-between">
+        <div>
+          <h4 class="text-lg font-bold">Confirmar pedido</h4>
+          <div class="muted text-sm">Vamos preparar a mensagem para o WhatsApp</div>
+        </div>
+        <button id="closeModal" class="text-muted">✕</button>
+      </div>
+
+      <form id="orderForm" class="mt-4 space-y-3">
+        <input id="itemName" class="w-full p-3 rounded border border-gray-200" placeholder="Produto (ex: Dúzia — Caipira)" required>
+        <div class="grid grid-cols-2 gap-3">
+          <input id="qty" type="number" min="1" value="1" class="w-full p-3 rounded border border-gray-200" placeholder="Quantidade">
+          <input id="delivery" class="w-full p-3 rounded border border-gray-200" placeholder="Data / Turno (ex: Amanhã manhã)">
+        </div>
+        <input id="clientName" class="w-full p-3 rounded border border-gray-200" placeholder="Seu nome">
+        <input id="clientPhone" class="w-full p-3 rounded border border-gray-200" placeholder="Telefone (WhatsApp)">
+
+        <div class="flex gap-2">
+          <button type="submit" class="pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-4 py-2">Abrir no WhatsApp</button>
+          <button type="button" id="modalCancel" class="pill border border-gray-200 px-4 py-2">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // small util: fade-in on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.fade-in').forEach((el, i) => {
+        setTimeout(()=> el.classList.add('show'), 120 + i*120);
+      });
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+
+    // Order modal helpers
+    const orderModal = document.getElementById('orderModal');
+    const orderBtn = document.getElementById('orderBtn');
+    const mobileBtn = document.getElementById('mobileBtn');
+    const closeModalBtn = document.getElementById('closeModal');
+    const modalCancel = document.getElementById('modalCancel');
+
+    function openModal(prefillItem='Dúzia — Caipira'){
+      orderModal.classList.remove('hidden');
+      document.getElementById('itemName').value = prefillItem;
+    }
+    function closeModal(){
+      orderModal.classList.add('hidden');
+    }
+
+    orderBtn && orderBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    closeModalBtn && closeModalBtn.addEventListener('click', closeModal);
+    modalCancel && modalCancel.addEventListener('click', closeModal);
+    // mobile menu (simple)
+    mobileBtn && mobileBtn.addEventListener('click', ()=> alert('No mobile menu wired — use links in the footer for now.'));
+
+    // external open order from product cards
+    window.openOrder = function(itemName){
+      openModal(itemName);
+    }
+
+    // Order form prepare whatsapp link
+    const orderForm = document.getElementById('orderForm');
+    orderForm && orderForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const item = encodeURIComponent(document.getElementById('itemName').value || 'Pedido');
+      const qty = encodeURIComponent(document.getElementById('qty').value || '1');
+      const delivery = encodeURIComponent(document.getElementById('delivery').value || '');
+      const name = encodeURIComponent(document.getElementById('clientName').value || '');
+      const phone = (document.getElementById('clientPhone').value || '').replace(/\D/g,'');
+      let message = `Olá, gostaria de fazer um pedido:\n- Produto: ${item}\n- Quantidade: ${qty}\n- Entrega: ${delivery}\n- Nome: ${name}\n- Telefone: ${phone}`;
+      const phoneTo = '5531996605864'; // Granja WhatsApp
+      const url = `https://wa.me/${phoneTo}?text=${encodeURIComponent(message)}`;
+      window.open(url,'_blank');
+      closeModal();
+    });
+
+    // Contact form to WhatsApp
+    const contactForm = document.getElementById('contactForm');
+    contactForm && contactForm.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const fn = encodeURIComponent(contactForm.nome?.value||'');
+      const tp = (contactForm.telefone?.value||'').replace(/\D/g,'');
+      const msg = encodeURIComponent(contactForm.mensagem?.value||'');
+      const phoneTo = '5531996605864';
+      const message = `Contato site:\nNome: ${fn}\nTelefone: ${tp}\nMensagem: ${msg}`;
+      window.open(`https://wa.me/${phoneTo}?text=${message}`,'_blank');
+    });
+
+    // --- Charts ---
+    // Freshness mini chart
+    new Chart(document.getElementById('freshnessChart'), {
+      type: 'doughnut',
+      data: {
+        labels:['Frescor','Estoque'],
+        datasets:[{
+          data:[85,15],
+          backgroundColor:[getComputedStyle(document.documentElement).getPropertyValue('--brand-green') || '#2F7A3F', '#F2F4F7']
+        }]
+      },
+      options:{
+        plugins:{legend:{display:false}},
+        cutout: '70%',
+      }
+    });
+
+    // Nutrition chart (simulated)
+    new Chart(document.getElementById('nutritionChart'), {
+      type: 'bar',
+      data:{
+        labels:['Ômega-3','Vitaminas (A,E,D)','Colesterol'],
+        datasets:[
+          { label:'Ovo Caipira', data:[9,8.5,6.8], backgroundColor:getComputedStyle(document.documentElement).getPropertyValue('--brand-green') || '#2F7A3F' },
+          { label:'Ovo Comum', data:[5,6,8], backgroundColor:'#F0C089' }
+        ]
+      },
+      options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        scales:{ y:{ beginAtZero:true } }
+      }
+    });
+
+    // Production line chart
+    new Chart(document.getElementById('productionChart'), {
+      type: 'line',
+      data:{
+        labels:['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+        datasets:[{
+          label:'Produção (unidades)',
+          data:[220, 230, 210, 245, 260, 240, 255],
+          fill:true,
+          tension:0.3,
+          backgroundColor:'rgba(47,122,63,0.12)',
+          borderColor:getComputedStyle(document.documentElement).getPropertyValue('--brand-green') || '#2F7A3F',
+          pointBackgroundColor:getComputedStyle(document.documentElement).getPropertyValue('--brand-yellow') || '#FFC947'
+        }]
+      },
+      options:{ responsive:true, maintainAspectRatio:false }
+    });
+
+    // small accessibility: close modal on ESC
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+  </script>
+
+</body>
+</html>
