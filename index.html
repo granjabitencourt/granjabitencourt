@@ -68,59 +68,86 @@
   </nav>
 
   <!-- HERO -->
-  <header class="hero-wave">
-    <div class="max-w-6xl mx-auto px-6 py-12 lg:py-20">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        <div class="fade-in" id="heroText">
-          <div class="card p-6 lg:p-10">
-            <div class="flex items-center gap-4">
-              <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:linear-gradient(180deg,var(--brand-green), #2b6a34);">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 3c.7 0 1.4.1 2 .4 1.3.6 2.4 1.7 3 3 .3.6.4 1.3.4 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div>
-                <div class="text-xs text-[var(--brand-muted)] uppercase font-semibold">Direto da Granja</div>
-                <div class="text-2xl font-extrabold text-[var(--brand-dark)]">Ovos Caipiras Fresquinhos</div>
-              </div>
+<header class="hero-wave">
+  <div class="max-w-6xl mx-auto px-6 py-12 lg:py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div class="fade-in" id="heroText">
+        <div class="card p-6 lg:p-10">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-full flex items-center justify-center bg-[var(--brand-green)]">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3c.7 0 1.4.1 2 .4 1.3.6 2.4 1.7 3 3 .3.6.4 1.3.4 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
-
-            <h1 class="hero-title text-4xl lg:text-5xl font-extrabold text-[var(--brand-dark)] mt-6 leading-tight">
-              Sabor mais intenso. Mais nutrientes. <span class="text-[var(--brand-yellow)]">100% local</span>.
-            </h1>
-
-            <p class="muted mt-4 max-w-xl">Galinha criada livre, coleta diária e entrega rápida para Nova Lima. Apoie o produtor local e leve para casa ovos mais saborosos e nutritivos.</p>
-
-            <div class="mt-6 flex gap-3 flex-wrap">
-              <a id="orderBtn" href="#" class="cta pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-5 py-3 inline-flex items-center gap-3">
-                Peça agora pelo WhatsApp
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2h-1l-1 2-3-3v-1h1a2 2 0 0 1 2-2h4z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-              <a href="#produtos" class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] font-medium px-5 py-3">Ver produtos</a>
+            <div>
+              <div class="text-xs text-[var(--brand-muted)] uppercase font-semibold">Direto da Granja</div>
+              <div class="text-2xl font-extrabold text-[var(--brand-dark)]">Ovos Caipiras Fresquinhos</div>
             </div>
+          </div>
 
-            <div class="mt-6 grid grid-cols-2 gap-3">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow">
-                  <svg width="18" height="18"><circle cx="9" cy="9" r="6" fill="var(--brand-yellow)"/></svg>
-                </div>
-                <div>
-                  <div class="text-sm font-semibold">Entrega local</div>
-                  <div class="text-xs muted">Nova Lima e região</div>
-                </div>
-              </div>
+          <h1 class="hero-title text-4xl lg:text-5xl font-extrabold text-[var(--brand-dark)] mt-6 leading-tight">
+            Sabor mais intenso. Mais nutrientes. <span class="text-[var(--brand-yellow)]">100% local</span>.
+          </h1>
 
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow">
-                  <svg width="18" height="18"><rect width="16" height="10" rx="2" fill="var(--egg-brown)"/></svg>
-                </div>
-                <div>
-                  <div class="text-sm font-semibold">Frescor diário</div>
-                  <div class="text-xs muted">Coleta e expedição rápida</div>
-                </div>
-              </div>
-            </div>
+          <p class="muted mt-4 max-w-xl">Galinha criada livre, coleta diária e entrega rápida para Nova Lima. Apoie o produtor local e leve para casa ovos mais saborosos e nutritivos.</p>
 
+          <div class="mt-6 flex gap-3 flex-wrap">
+            <a id="orderBtn" href="#" class="cta pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-5 py-3 inline-flex items-center gap-3">
+              Peça agora pelo WhatsApp
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M21 15a2 2 0 0 1-2 2h-1l-1 2-3-3v-1h1a2 2 0 0 1 2-2h4z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#produtos" class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] font-medium px-5 py-3">Ver produtos</a>
           </div>
         </div>
+      </div>
+
+      <!-- Visual / Product panel -->
+      <div class="fade-in" id="heroVisual">
+        <div class="card p-6 lg:p-10">
+          <div class="flex flex-col gap-4">
+            <div class="rounded-lg overflow-hidden" style="background:linear-gradient(180deg,#fff 0%, #fffbf2 100%);">
+              <div class="p-6">
+                <div class="flex items-center gap-4">
+                  <!-- LOGO AGORA REDONDA -->
+                  <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-[var(--brand-yellow)] shadow-lg">
+                    <img src="logo.png" alt="Logo Granja Bitencourt" class="w-full h-full object-cover">
+                  </div>
+                  <div>
+                    <div class="text-lg font-bold text-[var(--brand-dark)]">Granja Bitencourt</div>
+                    <div class="text-sm muted">Ovos caipiras — sabor autêntico</div>
+                  </div>
+                </div>
+
+                <!-- CARD DE PREÇO -->
+                <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="text-xs muted">Preço sugerido</div>
+                    <div class="text-xl font-extrabold text-[var(--brand-dark)] mt-1">R$ 14 / dúzia</div>
+                    <div class="text-xs muted mt-2">Embalagem sustentável • Entrega diária</div>
+                  </div>
+
+                  <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="text-xs muted">Disponibilidade</div>
+                    <div class="text-xl font-bold text-[var(--brand-green)] mt-1">Produção diária</div>
+                    <div class="text-xs muted mt-2">Pedidos por WhatsApp • Retirada e entrega</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-6 border-t border-gray-100">
+                <canvas id="freshnessChart" height="220"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 text-sm muted">* Valores e disponibilidade sujeitos a confirmação via WhatsApp.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
         <!-- Visual / Product panel -->
         <div class="fade-in" id="heroVisual">
@@ -503,3 +530,4 @@
 
 </body>
 </html>
+
