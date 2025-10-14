@@ -2,10 +2,21 @@
 <html lang="pt-BR">
 <head>
   
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Granja Bitencourt — Ovos Caipiras</title>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Granja Bitencourt - Ovos Caipiras Frescos</title>
 
+  <!-- 🔹 Meta tags SEO -->
+  <meta name="description" content="Granja Bitencourt — ovos caipiras frescos e de alta qualidade em Nova Lima.">
+  <meta name="keywords" content="ovos caipiras, granja bitencourt, nova lima, ovos frescos">
+  <meta property="og:title" content="Granja Bitencourt - Ovos Caipiras Frescos">
+  <meta property="og:description" content="Produzimos ovos caipiras com qualidade e cuidado.">
+  <meta property="og:image" content="https://granjabitencourt.github.io/granjabitencourt/imagem-principal.jpg">
+  <meta property="og:url" content="https://granjabitencourt.github.io/granjabitencourt/">
+</head>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" type="image/png" href="logo.png">
   
 <!-- Tailwind CDN -->
@@ -56,6 +67,15 @@
 
     /* Modal styles (simple) */
     .modal-card { max-width:720px; width:100%; padding:20px; border-radius:12px; background:linear-gradient(180deg, #fff, #fff); box-shadow:0 12px 40px rgba(2,6,23,0.12); }
+  .card:hover {
+  transform: translateY(-4px);
+  transition: 0.3s ease;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+.fa-instagram:hover { color: #E4405F; }
+.fa-whatsapp:hover { color: #25D366; }
+.fa-envelope:hover { color: #FFD43B; }
+
   </style>
 </head>
 <body class="antialiased">
@@ -233,11 +253,21 @@
       </div>
     </section>
     
-    <!-- Frete na encomenda -->
-<section id="frete" class="fade-in card p-6 lg:p-10 mb-8">
-  <h2 class="text-2xl font-extrabold text-[var(--brand-dark)]">Frete na encomenda</h2>
-  <p class="muted mt-2">Caso a encomenda seja destinada à entrega, o valor do frete será calculado durante o atendimento.<br> (34001-275 CEP da central de encomendas ) </p>
+<!-- Seção Como Comprar -->
+<section id="como-comprar" class="fade-in card p-6 lg:p-10 mb-8">
+  <h2 class="text-2xl font-extrabold text-[var(--brand-dark)]">Como Comprar</h2>
+  <p class="muted mt-2">Veja como é simples fazer seu pedido na Granja Bitencourt:</p>
+  
+  <div class="mt-6 bg-white rounded-2xl shadow-md p-6">
+    <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+      <li>Entre em contato pelo <strong>WhatsApp</strong> ou formulário de contato.</li>
+      <li>Informe a quantidade desejada e o endereço de entrega.</li>
+      <li>Combinamos o valor do frete e o horário da entrega.</li>
+    </ol>
+  </div>
 </section>
+
+
 
     <!-- Charts / Interactive -->
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
@@ -299,60 +329,132 @@
     <section class="card p-6 mb-8" id="sobre">
       <h3 class="text-xl font-extrabold">Sobre a Granja</h3>
       <p class="muted mt-2">Produzimos ovos caipiras em Nova Lima com foco em bem-estar animal e qualidade. Nosso manual interno padroniza manejo, biossegurança e práticas financeiras para manter a produção confiável e sustentável.</p>
-      <div class="mt-4 text-sm muted">Leia o manual completo na sede ou solicite via WhatsApp para informações administrativas.</div>
+      <div class="mt-4 text-sm muted">Leia o manual completo na sede ou solicite via WhatsApp ou Email para informações administrativas.</div>
     </section>
 
-    <!-- Contact -->
-    <section id="contato" class="card p-6 mb-12">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-        <div>
-          <h3 class="text-2xl font-extrabold">Fale Conosco</h3>
-          <p class="muted mt-2">Pedidos e atendimento via WhatsApp — rápido e pessoal.</p>
+    <!-- Seção de Contato -->
+<section id="contato" class="fade-in card p-6 lg:p-10 mb-12">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+    
+    <!-- Coluna de informações -->
+    <div>
+      <h2 class="text-2xl font-extrabold text-[var(--brand-dark)]">Fale Conosco</h2>
+      <p class="muted mt-2">Entre em contato conosco para pedidos, dúvidas ou informações sobre entregas.</p>
 
-          <div class="mt-4 space-y-3">
-            <a id="whatsMain" href="https://wa.me/5531996605864" target="_blank" class="pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-5 py-3 inline-flex items-center gap-3">
-              Abrir WhatsApp (31) 99660-5864
-            </a>
+      <div class="mt-6 space-y-4">
+        <a id="whatsMain" href="https://wa.me/5531996605864" target="_blank"
+           class="pill bg-[var(--brand-green)] hover:bg-green-600 transition text-white font-bold px-6 py-3 inline-flex items-center gap-3 shadow-md">
+          <i class="fa-brands fa-whatsapp text-2xl"></i> Falar pelo WhatsApp
+        </a>
 
-            <div class="text-sm muted">Ou envie um e-mail para contato <strong>bitencourtgranja@gmail.com</strong> </div>
-          </div>
-        </div>
-
-        <div>
-          <form id="contactForm" class="space-y-3">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <input name="nome" required class="w-full p-3 rounded border border-gray-200" placeholder="Seu nome">
-              <input name="telefone" required class="w-full p-3 rounded border border-gray-200" placeholder="Telefone (WhatsApp)">
-            </div>
-            <textarea name="mensagem" rows="3" class="w-full p-3 rounded border border-gray-200" placeholder="Mensagem / pedido (ex: 2 dúzias, entrega amanhã)"></textarea>
-            <div class="flex gap-3">
-              <button type="submit" class="pill bg-[var(--brand-green)] text-white px-4 py-2">Enviar pedido (preparar WhatsApp)</button>
-              <button type="reset" class="pill border border-gray-200 px-4 py-2">Limpar</button>
-            </div>
-            <div class="text-xs muted">Ao enviar, preparamos uma mensagem pronta para o WhatsApp.</div>
-          </form>
+        <!-- Botão para enviar e-mail automaticamente -->
+<a href="mailto:bitencourtgranja@gmail.com?subject=Pedido%20de%20Ovos%20Caipiras&body=Olá%20Granja%20Bitencourt,%0D%0A%0D%0AQuero%20fazer%20um%20pedido%20de%20ovos.%20Segue%20meus%20dados:%0D%0A%0D%0ANome:%0D%0AEndereço:%0D%0AQuantidade:%0D%0A%0D%0AObrigado!"
+   class="pill bg-[var(--brand-yellow)] hover:bg-yellow-400 transition text-[var(--brand-dark)] font-bold px-6 py-3 inline-flex items-center gap-3 shadow-md">
+  <i class="fa-solid fa-envelope text-lg"></i> Enviar E-mail
+</a>
+        <div class="text-sm text-gray-600">
+          <p>📍 Nova Lima - MG</p>
+          <p>🕒 Atendimento: segunda a sábado, 8h às 17h</p>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- Coluna do formulário -->
+    <div>
+      <form id="contactForm" class="space-y-4 bg-white rounded-2xl shadow-inner p-6">
+        <h3 class="text-lg font-semibold text-[var(--brand-dark)] mb-2">Envie sua mensagem</h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <input name="nome" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-green)]" placeholder="Seu nome">
+          <input name="telefone" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-green)]" placeholder="Telefone (WhatsApp)">
+        </div>
+
+        <textarea name="mensagem" rows="3" required
+                  class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-green)]"
+                  placeholder="Mensagem / pedido (ex: 2 dúzias, entrega amanhã)">
+        </textarea>
+
+        <div class="flex flex-wrap gap-3">
+          <button type="submit"
+                  class="pill bg-[var(--brand-green)] hover:bg-green-600 text-white px-5 py-2 transition">
+            Enviar pedido via WhatsApp
+          </button>
+          <button type="reset"
+                  class="pill border border-gray-200 hover:bg-gray-100 px-5 py-2 transition">
+            Limpar
+          </button>
+        </div>
+
+        <p class="text-xs muted mt-2">🔒 Suas informações são usadas apenas para contato direto via WhatsApp.</p>
+      </form>
+    </div>
+  </div>
+</section>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-[var(--brand-dark)] text-white py-8">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-      <div>
-        <div class="font-extrabold">Granja Bitencourt</div>
-        <div class="text-sm mt-1 muted">Nova Lima • Produção local e sustentável</div>
-      </div>
-
-      <div class="text-sm muted">© <span id="year"></span> Granja Bitencourt — Todos os direitos reservados</div>
-
-      <div class="flex items-center gap-3">
-        <a href="https://www.instagram.com/GranjaBitencourt" target="_blank" class="text-white text-sm">Instagram</a>
-        <a href="https://wa.me/5531996605864" target="_blank" class="text-white text-sm">WhatsApp</a>
-      </div>
+  <!-- Rodapé -->
+<footer class="bg-[var(--brand-dark)] text-white py-10">
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+    <!-- Coluna 1: Marca -->
+    <div>
+      <h3 class="font-extrabold text-lg">Granja Bitencourt</h3>
+      <p class="text-sm mt-2 text-gray-300">
+        Produzimos ovos caipiras frescos com cuidado e qualidade em <strong>Nova Lima - MG</strong>.
+      </p>
     </div>
-  </footer>
+
+    <!-- Coluna 2: Contato -->
+    <div>
+      <h4 class="font-semibold text-md mb-2">Contato</h4>
+      <ul class="space-y-1 text-sm text-gray-300">
+        <li>📞 <a href="https://wa.me/5531996605864" target="_blank" class="hover:underline"> (31) 99660-5864</a></li>
+        <li>✉️ <a href="mailto:bitencourtgranja@gmail.com" class="hover:underline">bitencourtgranja@gmail.com</a></li>
+        <li>📍 Nova Lima - MG</li>
+        <li>🕒 Atendimento: 8h às 17h</li>
+      </ul>
+    </div>
+
+    <!-- Coluna 3: Redes sociais -->
+<div>
+  <div class="flex items-center justify-start md:justify-center gap-4"></div>
+  <h4 class="font-semibold text-md mb-2">Siga-nos</h4>
+  <div class="flex items-center gap-4">
+    <a href="https://www.instagram.com/GranjaBitencourt" target="_blank" rel="noopener" aria-label="Instagram" 
+       class="hover:text-[var(--brand-yellow)] transition" title="Instagram">
+      <i class="fa-brands fa-instagram text-xl"></i>
+    </a>
+
+    <a href="https://wa.me/5531996605864" target="_blank" rel="noopener" aria-label="WhatsApp"
+       class="hover:text-[var(--brand-yellow)] transition" title="WhatsApp">
+      <i class="fa-brands fa-whatsapp text-xl"></i>
+    </a>
+
+    <a href="mailto:bitencourtgranja@gmail.com" aria-label="E-mail" class="hover:text-[var(--brand-yellow)] transition" title="E-mail">
+      <i class="fa-solid fa-envelope text-xl"></i>
+    </a>
+
+    <!-- YouTube: substitua a URL pelo canal/caminho correto se necessário -->
+    <a href="https://www.youtube.com/@GranjaBitencourt" target="_blank" rel="noopener" aria-label="YouTube"
+       class="hover:text-[var(--brand-yellow)] transition" title="YouTube">
+      <i class="fa-brands fa-youtube text-xl"></i>
+    </a>
+  </div>
+</div>
+
+
+  <!-- Linha inferior -->
+  <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-400">
+    © <span id="year"></span> Granja Bitencourt — Todos os direitos reservados.
+  </div>
+</footer>
+
+<!-- Atualiza o ano automaticamente -->
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 
   <!-- Modal / Order -->
   <div id="orderModal" class="fixed inset-0 bg-black bg-opacity-40 hidden overflow-y-auto z-50">
