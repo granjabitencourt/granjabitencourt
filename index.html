@@ -25,6 +25,17 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
+    #mainHeader {
+  background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(254,251,246,0.9) 100%);
+}
+
+    #sobre i {
+  transition: transform 0.5s ease;
+}
+#sobre:hover i {
+  transform: rotate(-10deg) scale(1.1);
+}
+
     .fade-up {
   opacity: 0;
   transform: translateY(20px);
@@ -33,6 +44,9 @@
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
+.fa-instagram:hover { color: #E4405F; }
+.fa-whatsapp:hover { color: #25D366; }
+.fa-envelope:hover { color: #FFD43B; }
 }
     :root{
       --brand-dark:#0A3F36; /* deep brand green */
@@ -41,6 +55,7 @@
       --brand-yellow:#FFC947;
       --egg-brown:#a15d3f;
       --bg:#FEFBF6;
+   
     }
     body{ background:var(--bg); font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #0f172a; }
     .card { background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85)); box-shadow: 0 8px 30px rgba(10,10,10,0.08); border-radius: 14px; }
@@ -81,9 +96,12 @@
   transition: 0.3s ease;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
 }
-.fa-instagram:hover { color: #E4405F; }
-.fa-whatsapp:hover { color: #25D366; }
-.fa-envelope:hover { color: #FFD43B; }
+#como-comprar i {
+  transition: transform 0.3s ease;
+}
+#como-comprar i:hover {
+  transform: scale(1.2);
+}
 
   </style>
 </head>
@@ -101,31 +119,75 @@
 
 <body class="antialiased">
 
-  <!-- NAV HEADER -->
-<header class="bg-white shadow-sm">
+ <!-- CABEÇALHO PROFISSIONAL -->
+<header id="mainHeader" class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    
     <!-- Logo e nome -->
-    <div class="flex items-center gap-3">
-      <div class="w-16 h-16 rounded-full overflow-hidden border-4 border-[var(--brand-yellow)] shadow-lg">
+    <a href="#" class="flex items-center gap-3 group">
+      <div class="w-14 h-14 rounded-full overflow-hidden border-4 border-[var(--brand-yellow)] shadow-md group-hover:scale-105 transition">
         <img src="logo.png" alt="Logo Granja Bitencourt" class="w-full h-full object-cover">
       </div>
       <div>
-        <div class="text-xl font-extrabold text-[var(--brand-dark)] leading-tight">Granja Bitencourt</div>
-        <div class="text-xs muted -mt-1">Ovos caipiras — Nova Lima</div>
+        <div class="text-xl font-extrabold text-[var(--brand-dark)] leading-tight group-hover:text-[var(--brand-green)] transition">
+          Granja Bitencourt
+        </div>
+        <div class="text-xs text-gray-500 -mt-1">Ovos caipiras — Nova Lima</div>
       </div>
-    </div>
+    </a>
 
-    <!-- Menu -->
-    <nav class="flex items-center gap-6">
-      <a href="#sobre" class="text-sm muted hover:text-[var(--brand-dark)]">Sobre</a>
-      <a href="#produtos" class="text-sm muted hover:text-[var(--brand-dark)]">Produtos</a>
-      <a href="#sustentabilidade" class="text-sm muted hover:text-[var(--brand-dark)]">Sustentabilidade</a>
-      <a href="#contato" class="pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-4 py-2">
+    <!-- Menu Desktop -->
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="#sobre" class="text-sm text-gray-600 hover:text-[var(--brand-dark)] transition">Sobre</a>
+      <a href="#produtos" class="text-sm text-gray-600 hover:text-[var(--brand-dark)] transition">Produtos</a>
+      <a href="#sustentabilidade" class="text-sm text-gray-600 hover:text-[var(--brand-dark)] transition">Sustentabilidade</a>
+      <a href="#contato" class="pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-4 py-2 shadow-sm hover:shadow-md hover:bg-yellow-400 transition">
         Peça pelo WhatsApp
       </a>
     </nav>
+
+    <!-- Botão Mobile -->
+    <button id="mobileMenuBtn" class="md:hidden text-[var(--brand-dark)] text-2xl focus:outline-none">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Menu Mobile -->
+  <div id="mobileMenu" class="hidden flex-col items-center bg-white border-t border-gray-200 shadow-lg md:hidden animate-fadeIn">
+    <a href="#sobre" class="py-3 text-gray-700 hover:text-[var(--brand-green)] w-full text-center">Sobre</a>
+    <a href="#produtos" class="py-3 text-gray-700 hover:text-[var(--brand-green)] w-full text-center">Produtos</a>
+    <a href="#sustentabilidade" class="py-3 text-gray-700 hover:text-[var(--brand-green)] w-full text-center">Sustentabilidade</a>
+    <a href="#contato" class="py-3 font-bold bg-[var(--brand-yellow)] text-[var(--brand-dark)] w-full text-center hover:bg-yellow-400 transition">
+      Peça pelo WhatsApp
+    </a>
   </div>
 </header>
+
+<script>
+  // Controle do menu móvel
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenuBtn.innerHTML = mobileMenu.classList.contains('hidden')
+      ? '<i class="fa-solid fa-bars"></i>'
+      : '<i class="fa-solid fa-xmark"></i>';
+  });
+
+  // Efeito de scroll no cabeçalho
+  const header = document.getElementById('mainHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('shadow-lg', 'bg-white/95');
+    } else {
+      header.classList.remove('shadow-lg', 'bg-white/95');
+    }
+  });
+</script>
+
+<!-- Ajuste para compensar o cabeçalho fixo -->
+<div class="h-24"></div>
+
 
   <!-- HERO -->
 <header class="hero-wave">
@@ -192,11 +254,43 @@
                 </div>
               </div>
 
-              <div class="p-6 border-t border-gray-100">
-                <canvas id="freshnessChart" height="220"></canvas>
-              </div>
-            </div>
-          </div>
+              <div class="p-6 border-t border-gray-100 text-center relative">
+  <canvas id="freshnessChart" height="220"></canvas>
+
+  <!-- Indicador de fila de espera -->
+  <div id="filaDeEspera" class="mt-6 inline-block px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md">
+    <i id="filaIcon" class="fa-solid fa-clock mr-2"></i>
+    <span id="filaTexto">Verificando disponibilidade...</span>
+  </div>
+</div>
+
+<script>
+  // 🔹 Controle manual da fila
+  const filaAtiva = true; // Altere para true quando houver fila
+
+  const filaDeEspera = document.getElementById("filaDeEspera");
+  const filaTexto = document.getElementById("filaTexto");
+  const filaIcon = document.getElementById("filaIcon");
+
+  if (filaAtiva) {
+    // Destaque visual forte
+    filaTexto.textContent = "⚠️ Fila de espera temporária";
+    filaDeEspera.classList.add(
+      "bg-red-100", "border", "border-red-400", "text-red-700", "animate-pulse"
+    );
+    filaIcon.classList.replace("fa-clock", "fa-hourglass-half");
+    filaIcon.classList.add("text-red-600");
+  } else {
+    // Visual neutro e positivo
+    filaTexto.textContent = "🟢 Sem fila de espera";
+    filaDeEspera.classList.add(
+      "bg-green-100", "border", "border-green-400", "text-green-700"
+    );
+    filaIcon.classList.add("fa-clock", "text-green-600");
+  }
+</script>
+
+
 
           <div class="mt-4 text-sm muted">* Valores e disponibilidade sujeitos a modificação, confirmação via WhatsApp.</div>
         </div>
@@ -209,82 +303,115 @@
   <main class="max-w-6xl mx-auto px-6 py-12">
 
     <!-- Produtos / Highlights -->
-    <section id="produtos" class="fade-up card p-6 lg:p-10 mb-8">
-      <div class="flex items-center justify-between">
+<section id="produtos" class="fade-up card p-6 lg:p-10 mb-8">
+  <div class="flex items-center justify-between">
+    <div>
+      <h2 class="text-2xl font-extrabold text-[var(--brand-dark)]">Nossos Produtos</h2>
+      <p class="muted mt-2">Ovos caipiras, por qualidade e sabor — embalagens sustentáveis e entregas locais.</p>
+    </div>
+    <div class="hidden md:block">
+      <a href="#contato" class="pill border border-[var(--brand-green)] text-[var(--brand-green)] px-4 py-2">Quero receber novidades</a>
+    </div>
+  </div>
+
+  <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+    <!-- Produto 1: Dúzia -->
+    <article class="p-4 rounded-lg border border-gray-100">
+      <div class="flex items-start gap-3">
+        <div class="w-14 h-14 rounded-md flex items-center justify-center" style="background:linear-gradient(180deg,var(--egg-brown), #b7633f);">
+          <i class="fa-solid fa-egg text-white text-2xl"></i>
+        </div>
         <div>
-          <h2 class="text-2xl font-extrabold text-[var(--brand-dark)]">Nossos Produtos</h2>
-          <p class="muted mt-2">Ovos caipiras, por qualidade e sabor — embalagens sustentáveis e entregas locais.</p>
-        </div>
-        <div class="hidden md:block">
-          <a href="#contato" class="pill border border-[var(--brand-green)] text-[var(--brand-green)] px-4 py-2">Quero receber novidades</a>
+          <h3 class="font-bold text-[var(--brand-dark)]">Ovo Dúzia — Caipira</h3>
+          <p class="muted text-sm mt-1">Embalagem 12 unidades — ração natural e manejo livre.</p>
+          <div class="mt-3 flex gap-2">
+            <button class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1" onclick="openOrder('Ovo Dúzia — Caipira')">Pedir</button>
+            <button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted" onclick="showDetails('Ovo Dúzia — Caipira')">Detalhes</button>
+          </div>
         </div>
       </div>
+    </article>
 
-      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Card 1 -->
-        <article class="p-4 rounded-lg border border-gray-100">
-          <div class="flex items-start gap-3">
-            <div class="w-14 h-14 rounded-md flex items-center justify-center" style="background:linear-gradient(180deg,var(--egg-brown), #b7633f);">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="12" rx="7" ry="9" fill="white" /></svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-[var(--brand-dark)]">Ovo Dúzia — Caipira</h3>
-              <p class="muted text-sm mt-1">Embalagem 12 unidades — ração natural e manejo livre.</p>
-              <div class="mt-3 flex gap-2">
-                <button class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1" onclick="openOrder('Ovo Dúzia — Caipira')">Pedir</button>
-                <button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted" onclick="showDetails('Ovo Dúzia — Caipira')">Detalhes</button>
-              </div>
-            </div>
+    <!-- Produto 2: Caixa 30 Un -->
+    <article class="p-4 rounded-lg border border-gray-100">
+      <div class="flex items-start gap-3">
+        <div class="w-14 h-14 rounded-md flex items-center justify-center" style="background:linear-gradient(180deg,var(--brand-green), #2a6a34);">
+          <i class="fa-solid fa-box-open text-white text-2xl"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-[var(--brand-dark)]">Ovo Caixa — 30 un</h3>
+          <p class="muted text-sm mt-1">Perfeito para pequeno comércio e eventos locais.</p>
+          <div class="mt-3 flex gap-2">
+            <button class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1" onclick="openOrder('Ovo Caixa — 30 un')">Pedir</button>
+            <button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted" onclick="showDetails('Ovo Caixa — 30 un')">Detalhes</button>
           </div>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="p-4 rounded-lg border border-gray-100">
-          <div class="flex items-start gap-3">
-            <div class="w-14 h-14 rounded-md flex items-center justify-center" style="background:linear-gradient(180deg,var(--brand-green), #2a6a34);">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12h18" stroke="white" stroke-width="2"/></svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-[var(--brand-dark)]">Ovo Caixa — 30 un</h3>
-              <p class="muted text-sm mt-1">Perfeito para pequeno comércio e eventos locais.</p>
-              <div class="mt-3 flex gap-2">
-                <button class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1" onclick="openOrder('Ovo Caixa — 30 un')">Pedir</button>
-                <button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted" onclick="showDetails('Ovo Caixa — 30 un')">Detalhes</button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="p-4 rounded-lg border border-gray-100">
-          <div class="flex items-start gap-3">
-            <div class="w-14 h-14 rounded-md flex items-center justify-center" style="background:linear-gradient(180deg,var(--brand-yellow), #ffd57a);">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3l18 18" stroke="#6b3e28" stroke-width="2"/></svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-[var(--brand-dark)]">Assinatura Semanal</h3>
-              <p class="muted text-sm mt-1">Receba ovos frescos toda semana em sua casa.</p>
-              <div class="mt-3 flex gap-2">
-                <button class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1" onclick="openOrder('Assinatura Semanal')">Pedir</button>
-                <button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted" onclick="showDetails('Assinatura Semanal')">Detalhes</button>
-              </div>
-            </div>
-          </div>
-        </article>
+        </div>
       </div>
-    </section>
+    </article>
+
+    <!-- Produto 3: Assinatura -->
+    <article class="p-4 rounded-lg border border-gray-100">
+      <div class="flex items-start gap-3">
+        <div class="w-14 h-14 rounded-md flex items-center justify-center" style="background:linear-gradient(180deg,var(--brand-yellow), #ffd57a);">
+          <i class="fa-solid fa-calendar-week text-[var(--brand-dark)] text-2xl"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-[var(--brand-dark)]">Assinatura Semanal</h3>
+          <p class="muted text-sm mt-1">Receba ovos frescos toda semana em sua casa.</p>
+          <div class="mt-3 flex gap-2">
+            <button class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1" onclick="openOrder('Assinatura Semanal')">Pedir</button>
+            <button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted" onclick="showDetails('Assinatura Semanal')">Detalhes</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
     
 <!-- Seção Como Comprar -->
-<section id="como-comprar" class="fade-up card p-6 lg:p-10 mb-8">
-  <h2 class="text-2xl font-extrabold text-[var(--brand-dark)]">Como Comprar</h2>
-  <p class="muted mt-2">Veja como é simples fazer seu pedido na Granja Bitencourt:</p>
-  
-  <div class="mt-6 bg-white rounded-2xl shadow-md p-6">
-    <ol class="list-decimal ml-6 space-y-2 text-gray-700">
-      <li>Entre em contato pelo <strong>WhatsApp</strong> ou formulário de contato.</li>
-      <li>Informe a quantidade desejada e o endereço de entrega.</li>
-      <li>Combinamos o valor do frete e o horário da entrega.</li>
-    </ol>
+<section id="como-comprar" class="fade-up card p-8 lg:p-12 mb-12 bg-gradient-to-br from-white via-[var(--brand-light)] to-[#fef9e7] rounded-2xl shadow-md">
+  <div class="text-center mb-8">
+    <h2 class="text-3xl font-extrabold text-[var(--brand-dark)]">Como Comprar</h2>
+    <p class="muted mt-3 text-lg">Fazer seu pedido com a Granja Bitencourt é simples e rápido 🐔</p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6 mt-6 text-center">
+    
+    <!-- Etapa 1 -->
+    <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+      <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-yellow)] text-[var(--brand-dark)] text-2xl shadow-md mb-4">
+        <i class="fa-brands fa-whatsapp"></i>
+      </div>
+      <h3 class="font-bold text-lg text-[var(--brand-dark)]">1. Entre em contato</h3>
+      <p class="text-gray-600 mt-2 text-sm leading-relaxed">
+        Fale conosco pelo <strong>WhatsApp</strong> ou formulário para iniciar seu pedido.
+      </p>
+    </div>
+
+    <!-- Etapa 2 -->
+    <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+      <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-green)] text-white text-2xl shadow-md mb-4">
+        <i class="fa-solid fa-clipboard-list"></i>
+      </div>
+      <h3 class="font-bold text-lg text-[var(--brand-dark)]">2. Informe o pedido</h3>
+      <p class="text-gray-600 mt-2 text-sm leading-relaxed">
+        Envie a <strong>quantidade desejada</strong> e o <strong>endereço de entrega</strong>.
+      </p>
+    </div>
+
+    <!-- Etapa 3 -->
+    <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+      <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-dark)] text-white text-2xl shadow-md mb-4">
+        <i class="fa-solid fa-truck"></i>
+      </div>
+      <h3 class="font-bold text-lg text-[var(--brand-dark)]">3. Receba com comodidade</h3>
+      <p class="text-gray-600 mt-2 text-sm leading-relaxed">
+        Combinamos o <strong>frete</strong> e o <strong>horário</strong> da entrega para você receber tudo fresquinho.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -346,12 +473,50 @@
       </div>
     </section>
 
-    <!-- Quick manual summary (non-confidential) -->
-    <section class="card p-6 mb-8" id="sobre">
-      <h3 class="text-xl font-extrabold">Sobre a Granja</h3>
-      <p class="muted mt-2">Produzimos ovos caipiras em Nova Lima com foco em bem-estar animal e qualidade. Nosso manual interno padroniza manejo, biossegurança e práticas financeiras para manter a produção confiável e sustentável.</p>
-      <div class="mt-4 text-sm muted">Leia o manual completo na sede ou solicite via WhatsApp ou Email para informações administrativas.</div>
-    </section>
+   <!-- Seção Sobre a Granja -->
+<section id="sobre" class="fade-up card p-8 lg:p-12 mb-12 bg-gradient-to-br from-white via-[var(--brand-light)] to-[#fef9e7] rounded-2xl shadow-md">
+  <div class="flex flex-col lg:flex-row items-center gap-8">
+
+    <!-- Ícone / Ilustração -->
+    <div class="flex-shrink-0 text-[var(--brand-green)]">
+      <i class="fa-solid fa-egg text-6xl"></i>
+    </div>
+
+    <!-- Texto -->
+    <div>
+      <h2 class="text-3xl font-extrabold text-[var(--brand-dark)] mb-3">
+        Sobre a Granja Bitencourt
+      </h2>
+
+      <p class="text-gray-700 leading-relaxed mb-4">
+        A <strong>Granja Bitencourt</strong> atua em <strong>Nova Lima – MG</strong>, produzindo 
+        <strong>ovos caipiras</strong> com foco no <strong>bem-estar animal</strong>, na 
+        <strong>qualidade</strong> e na <strong>sustentabilidade</strong>.
+      </p>
+
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Cada etapa do nosso trabalho é guiada por um <strong>manual interno de boas práticas</strong>, 
+        que estabelece padrões de <strong>manejo responsável</strong>, <strong>biossegurança</strong>, 
+        <strong>rastreabilidade</strong> e <strong>gestão financeira</strong>, garantindo uma 
+        produção <strong>ética, segura e constante</strong>.
+      </p>
+
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Nosso compromisso é entregar <strong>ovos sempre frescos e saudáveis</strong>, mantendo a 
+        <strong>confiança de quem valoriza alimentos de origem consciente</strong>.
+      </p>
+
+      <div class="mt-4 text-sm text-gray-600 bg-white p-4 rounded-xl shadow-inner">
+        Para conhecer mais sobre nossos processos, 
+        <strong>visite nossa sede</strong> ou solicite o 
+        <strong>manual completo</strong> pelo 
+        <a href="https://wa.me/5531996605864" target="_blank" class="text-[var(--brand-green)] underline font-medium">WhatsApp</a> 
+        ou por e-mail: 
+        <a href="mailto:bitencourtgranja@gmail.com" class="text-[var(--brand-green)] underline font-medium">bitencourtgranja@gmail.com</a>.
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Seção de Contato -->
 <section id="contato" class="fade-in card p-6 lg:p-10 mb-12">
@@ -411,8 +576,6 @@
     </div>
   </div>
 </section>
-
-  </main>
 
   <!-- Rodapé -->
 <footer class="bg-[var(--brand-dark)] text-white py-10">
@@ -809,23 +972,7 @@ try {
     mobileBtn && mobileBtn.addEventListener('click', ()=> alert('Menu móvel não configurado — use os links do rodapé por enquanto.'));
  
 </script>
-<!-- Botão voltar ao topo -->
-<button id="toTop"
-        class="fixed bottom-6 right-6 bg-[var(--brand-green)] text-white p-3 rounded-full shadow-lg hidden hover:bg-green-600 transition"
-        aria-label="Voltar ao topo">
-  ↑
-</button>
-<script>
-  const toTop = document.getElementById('toTop');
-  window.addEventListener('scroll', () => {
-    // mostra o botão quando rolar mais de 400px
-    toTop.style.display = window.scrollY > 400 ? 'block' : 'none';
-  });
-  // sobe suavemente ao topo
-  toTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
+
 <!-- Botão flutuante do WhatsApp -->
 <a href="https://wa.me/5531996605864"
    target="_blank"
@@ -836,3 +983,4 @@ try {
 
 </body>
 </html>
+
