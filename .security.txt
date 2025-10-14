@@ -1,0 +1,5 @@
+Contact: mailto:bitencourtgranja@gmail.com
+Encryption: https://keys.openpgp.org/
+Acknowledgements: https://bitencourtgranja-crypto.github.io/granjabitencourt/
+Preferred-Languages: pt, en
+Canonical: https://bitencourtgranja-crypto.github.io/.well-known/security.txt
