@@ -25,6 +25,15 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
+    .fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
     :root{
       --brand-dark:#0A3F36; /* deep brand green */
       --brand-green:#2F7A3F; 
@@ -78,6 +87,18 @@
 
   </style>
 </head>
+<script>
+  // Faz os elementos com classe .fade-up aparecerem suavemente ao rolar a página
+  window.addEventListener("scroll", () => {
+    document.querySelectorAll(".fade-up").forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.9) {
+        el.classList.add("visible");
+      }
+    });
+  });
+</script>
+
 <body class="antialiased">
 
   <!-- NAV HEADER -->
@@ -188,7 +209,7 @@
   <main class="max-w-6xl mx-auto px-6 py-12">
 
     <!-- Produtos / Highlights -->
-    <section id="produtos" class="fade-in card p-6 lg:p-10 mb-8">
+    <section id="produtos" class="fade-up card p-6 lg:p-10 mb-8">
       <div class="flex items-center justify-between">
         <div>
           <h2 class="text-2xl font-extrabold text-[var(--brand-dark)]">Nossos Produtos</h2>
@@ -254,7 +275,7 @@
     </section>
     
 <!-- Seção Como Comprar -->
-<section id="como-comprar" class="fade-in card p-6 lg:p-10 mb-8">
+<section id="como-comprar" class="fade-up card p-6 lg:p-10 mb-8">
   <h2 class="text-2xl font-extrabold text-[var(--brand-dark)]">Como Comprar</h2>
   <p class="muted mt-2">Veja como é simples fazer seu pedido na Granja Bitencourt:</p>
   
@@ -788,7 +809,30 @@ try {
     mobileBtn && mobileBtn.addEventListener('click', ()=> alert('Menu móvel não configurado — use os links do rodapé por enquanto.'));
  
 </script>
+<!-- Botão voltar ao topo -->
+<button id="toTop"
+        class="fixed bottom-6 right-6 bg-[var(--brand-green)] text-white p-3 rounded-full shadow-lg hidden hover:bg-green-600 transition"
+        aria-label="Voltar ao topo">
+  ↑
+</button>
+<script>
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    // mostra o botão quando rolar mais de 400px
+    toTop.style.display = window.scrollY > 400 ? 'block' : 'none';
+  });
+  // sobe suavemente ao topo
+  toTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+<!-- Botão flutuante do WhatsApp -->
+<a href="https://wa.me/5531996605864"
+   target="_blank"
+   class="fixed bottom-20 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition"
+   aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp text-2xl"></i>
+</a>
 
 </body>
 </html>
-
