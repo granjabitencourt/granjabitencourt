@@ -15,7 +15,8 @@
   <meta property="og:image" content="https://granjabitencourt.github.io/granjabitencourt/imagem-principal.jpg">
   <meta property="og:url" content="https://granjabitencourt.github.io/granjabitencourt/">
 </head>
-
+  
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" type="image/png" href="logo.png">
   
@@ -25,6 +26,14 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
+    #galinhaImg {
+  animation: bounce 2s infinite ease-in-out;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
     #mainHeader {
   background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(254,251,246,0.9) 100%);
 }
@@ -254,42 +263,82 @@
                 </div>
               </div>
 
-              <div class="p-6 border-t border-gray-100 text-center relative">
-  <canvas id="freshnessChart" height="220"></canvas>
+<!-- Indicador de produção -->
+<div class="p-6 border-t border-gray-100 text-center">
 
-  <!-- Indicador de fila de espera -->
-  <div id="filaDeEspera" class="mt-6 inline-block px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md">
+  <!-- Ícone dinâmico -->
+  <div id="carinhaStatus" class="flex justify-center mb-4 text-6xl transition-all duration-300">
+    <i id="carinhaIcon" class="fa-solid fa-face-meh text-yellow-500"></i>
+  </div>
+
+  <!-- Número em destaque -->
+  <div>
+    <h3 class="text-3xl font-extrabold text-[var(--brand-dark)]">Taxa de Produção</h3>
+    <div id="taxaNumero" class="text-5xl font-extrabold mt-2">--%</div>
+    <p id="taxaStatus" class="text-sm mt-1 text-gray-600 flex items-center justify-center gap-2">
+      <i id="statusIcon" class="fa-solid fa-spinner animate-spin text-gray-400"></i>
+      <span>Calculando...</span>
+    </p>
+  </div>
+
+  <!-- Fila de espera -->
+  <div id="filaDeEspera" class="mt-6 inline-block px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md mx-auto">
     <i id="filaIcon" class="fa-solid fa-clock mr-2"></i>
     <span id="filaTexto">Verificando disponibilidade...</span>
   </div>
 </div>
 
 <script>
-  // 🔹 Controle manual da fila
-  const filaAtiva = false; // Altere para true quando houver fila, se não houver deixe em false
+  // 🔹 Taxa de produção (simulação)
+  const taxaProducao = 100; // altere esse valor conforme o dia
 
+  const taxaNumero = document.getElementById("taxaNumero");
+  const taxaStatus = document.getElementById("taxaStatus");
+  const carinhaIcon = document.getElementById("carinhaIcon");
+  const statusIcon = document.getElementById("statusIcon");
+
+  taxaNumero.textContent = `${taxaProducao}%`;
+
+  if (taxaProducao >= 80) {
+    // Alta produção 😊
+    taxaStatus.querySelector("span").textContent = "Produção alta e saudável";
+    taxaNumero.classList.add("text-green-600");
+    carinhaIcon.className = "fa-solid fa-face-smile text-green-600";
+    statusIcon.className = "fa-solid fa-arrow-trend-up text-green-600";
+  } else if (taxaProducao >= 50) {
+    // Produção estável 😐
+    taxaStatus.querySelector("span").textContent = "Produção estável";
+    taxaNumero.classList.add("text-yellow-500");
+    carinhaIcon.className = "fa-solid fa-face-meh text-yellow-500";
+    statusIcon.className = "fa-solid fa-arrows-left-right text-yellow-500";
+  } else {
+    // Produção baixa ☹️
+    taxaStatus.querySelector("span").textContent = "Produção abaixo do ideal";
+    taxaNumero.classList.add("text-red-600");
+    carinhaIcon.className = "fa-solid fa-face-frown text-red-600";
+    statusIcon.className = "fa-solid fa-arrow-trend-down text-red-600";
+  }
+
+  // 🔹 Controle da fila de espera
+  const filaAtiva = false; // mude para true se houver fila de espera e false se não houver
   const filaDeEspera = document.getElementById("filaDeEspera");
   const filaTexto = document.getElementById("filaTexto");
   const filaIcon = document.getElementById("filaIcon");
 
   if (filaAtiva) {
-    // Destaque visual forte
-    filaTexto.textContent = "⚠️ Fila de espera temporária";
+    filaTexto.textContent = "Fila de espera temporária";
     filaDeEspera.classList.add(
       "bg-red-100", "border", "border-red-400", "text-red-700", "animate-pulse"
     );
-    filaIcon.classList.replace("fa-clock", "fa-hourglass-half");
-    filaIcon.classList.add("text-red-600");
+    filaIcon.className = "fa-solid fa-hourglass-half text-red-600 mr-2";
   } else {
-    // Visual neutro e positivo
-    filaTexto.textContent = "🟢 Sem fila de espera";
+    filaTexto.textContent = "Sem fila de espera";
     filaDeEspera.classList.add(
       "bg-green-100", "border", "border-green-400", "text-green-700"
     );
-    filaIcon.classList.add("fa-clock", "text-green-600");
+    filaIcon.className = "fa-solid fa-check-circle text-green-600 mr-2";
   }
 </script>
-
 
 
           <div class="mt-4 text-sm muted">* Valores e disponibilidade sujeitos a modificação, confirmação via WhatsApp.</div>
@@ -428,12 +477,93 @@
       </div>
 
       <div class="card p-6">
-        <h3 class="text-lg font-bold">Produção diária (últimos 7 dias)</h3>
-        <p class="muted text-sm mt-2">Monitore a produção e verifique dias de pico.</p>
-        <div class="mt-4">
-          <canvas id="productionChart" height="260"></canvas>
-        </div>
-      </div>
+  <h3 class="text-lg font-bold">Comparativo de preço da dúzia</h3>
+  <p class="muted text-sm mt-2">Veja como o preço da Granja Bitencourt se compara aos principais supermercados de Minas Gerais.</p>
+
+  <div class="mt-4">
+    <canvas id="priceComparisonChart" height="260"></canvas>
+  </div>
+</div>
+
+<script>
+  // Carrega Chart.js apenas uma vez
+  if (!window.ChartJSLoaded) {
+    const s = document.createElement('script');
+    s.src = "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js";
+    s.onload = initPriceChart;
+    document.head.appendChild(s);
+    window.ChartJSLoaded = true;
+  } else {
+    initPriceChart();
+  }
+
+  function initPriceChart() {
+    const ctx = document.getElementById('priceComparisonChart').getContext('2d');
+    if (window.priceChartInstance) window.priceChartInstance.destroy();
+
+    // 🔹 Altere os preços diretamente aqui:
+    const prices = {
+      granja: 14.00,       // preço da Granja Bitencourt
+      verdemar: 19.20,     // Verdemar
+      bh: 18.50,           // Supermercados BH
+      carrefour: 18.00,    // Carrefour
+      extra: 19.08         // Extra
+    };
+
+    const labels = [
+      'Granja Bitencourt',
+      'Verdemar',
+      'Supermercados BH',
+      'Carrefour',
+      'Extra'
+    ];
+
+    const data = Object.values(prices);
+
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Preço por dúzia (R$)',
+          data,
+          backgroundColor: [
+            'rgba(34,197,94,0.9)',  // Granja Bitencourt (verde)
+            'rgba(99,102,241,0.85)', // Verdemar
+            'rgba(99,102,241,0.85)', // BH
+            'rgba(99,102,241,0.85)', // Carrefour
+            'rgba(99,102,241,0.85)'  // Extra
+          ],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: c => 'R$ ' + c.formattedValue
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: v => 'R$ ' + v
+            }
+          }
+        }
+      }
+    });
+
+    // Armazena instância para evitar duplicação
+    window.priceChartInstance = chart;
+  }
+</script>
+
     </section>
 
     <!-- Sustainability -->
@@ -983,5 +1113,3 @@ try {
 
 </body>
 </html>
-
-
