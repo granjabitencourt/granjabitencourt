@@ -602,6 +602,74 @@
         </div>
       </div>
     </section>
+<!-- Galeria de Fotos da Granja -->
+<section id="galeria" class="fade-up card p-6 lg:p-10 mb-12">
+  <h2 class="text-2xl font-extrabold text-[var(--brand-dark)]">📸 Nossa Granja</h2>
+  <p class="muted mt-2">Conheça um pouco mais do cuidado e da produção da Granja Bitencourt.</p>
+
+  <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <!-- Foto 1 -->
+    <div class="relative overflow-hidden rounded-2xl group cursor-pointer">
+      <img src="1.png" alt="Galinhas na área externa"
+           class="w-full h-56 object-cover transform transition-transform duration-700 group-hover:scale-110 group-hover:brightness-110">
+      <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-3">
+        <span class="text-white text-sm font-semibold">Galinhas felizes na granja</span>
+      </div>
+    </div>
+
+    <!-- Foto 2 -->
+    <div class="relative overflow-hidden rounded-2xl group cursor-pointer">
+      <img src="2.png" alt="Ninho com ovos frescos"
+           class="w-full h-56 object-cover transform transition-transform duration-700 group-hover:scale-110 group-hover:brightness-110">
+      <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-3">
+        <span class="text-white text-sm font-semibold">Ninhos com ovos frescos</span>
+      </div>
+    </div>
+
+    <!-- Foto 3 -->
+    <div class="relative overflow-hidden rounded-2xl group cursor-pointer">
+      <img src="3.png" alt="Vista geral do galinheiro"
+           class="w-full h-56 object-cover transform transition-transform duration-700 group-hover:scale-110 group-hover:brightness-110">
+      <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-3">
+        <span class="text-white text-sm font-semibold">Vista externa do galinheiro</span>
+      </div>
+    </div>
+
+    <!-- Foto 4 -->
+    <div class="relative overflow-hidden rounded-2xl group cursor-pointer">
+      <img src="4.png" alt="Galinhas alimentando-se"
+     class="w-full h-56 object-cover object-center transform transition-transform duration-700 group-hover:scale-110 group-hover:brightness-110">
+      <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-3">
+        <span class="text-white text-sm font-semibold">Momento de alimentação</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal de visualização -->
+<div id="lightbox" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50">
+  <img id="lightboxImg" src="" class="max-h-[85vh] max-w-[90vw] rounded-2xl shadow-2xl border-4 border-white">
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll("#galeria img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+
+  images.forEach(img => {
+    img.addEventListener("click", () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.remove("hidden");
+    });
+  });
+
+  lightbox.addEventListener("click", () => {
+    lightbox.classList.add("hidden");
+  });
+});
+</script>
+
 
    <!-- Seção Sobre a Granja -->
 <section id="sobre" class="fade-up card p-8 lg:p-12 mb-12 bg-gradient-to-br from-white via-[var(--brand-light)] to-[#fef9e7] rounded-2xl shadow-md">
