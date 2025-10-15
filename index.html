@@ -579,7 +579,7 @@
 
                 <script>
                   // 🔹 Taxa de produção (simulação)
-                  const taxaProducao = 100; // altere esse valor conforme o dia
+                  const taxaProducao = 79; // altere esse valor conforme o dia
 
                   const taxaNumero = document.getElementById("taxaNumero");
                   const taxaStatus = document.getElementById("taxaStatus");
@@ -588,7 +588,7 @@
 
                   taxaNumero.textContent = `${taxaProducao}%`;
 
-                  if (taxaProducao >= 80) {
+                  if (taxaProducao >= 70) {
                     // Alta produção 😊
                     taxaStatus.querySelector("span").textContent = "Produção alta e saudável";
                     taxaNumero.classList.add("text-green-600");
