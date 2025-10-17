@@ -21,6 +21,17 @@
 <!-- Tailwind CDN -->
 <!-- Chart.js -->
 <style>
+  /* força a cor do texto do botão específico no hover */
+  a.pill[href="#contato"]:hover {
+    color: #004400 !important;
+  }
+
+  /* força a cor do texto e de qualquer filho do botão no hover */
+  a.pill[href="#contato"]:hover,
+  a.pill[href="#contato"]:hover * {
+    color: #004400 !important;
+  }
+
   /* 🔹 Destaque visual no quadro “Direto da Granja” */
   #heroText {
     margin-top: -20px;
@@ -382,9 +393,45 @@
       opacity: 0.3;
     }
   }
+
+
+
+  /* Fix: ensure "Peça pelo WhatsApp" text remains readable on hover */
+  /* Targets header and mobile menu buttons that link to #contato */
+  #mainHeader a.pill[href="#contato"],
+  #mainHeader a.pill[href="#contato"] *,
+  #mobileMenu a[href="#contato"],
+  #mobileMenu a[href="#contato"] * {
+    color: var(--brand-dark) !important;
+  }
+
+  #mainHeader a.pill[href="#contato"]:hover,
+  #mainHeader a.pill[href="#contato"]:hover *,
+  #mobileMenu a[href="#contato"]:hover,
+  #mobileMenu a[href="#contato"]:hover * {
+    color: #1a1a1a !important;
+    /* texto escuro legível sobre amarelo */
+  }
 </style>
 
 <body class="antialiased">
+  <script>
+    (function () {
+      const btn = document.querySelector('a.pill[href="#contato"]');
+      if (!btn) return;
+      btn.addEventListener('mouseenter', () => {
+        btn.style.color = '#004400';
+        // aplica também para filhos
+        btn.querySelectorAll('*').forEach(el => el.style.color = '#004400');
+      });
+      btn.addEventListener('mouseleave', () => {
+        // volta para a cor original (usa var CSS se disponível)
+        btn.style.color = getComputedStyle(document.documentElement).getPropertyValue('--brand-dark') || '#222';
+        btn.querySelectorAll('*').forEach(el => el.style.color = '');
+      });
+    })();
+  </script>
+
   <!-- 🔔 Aviso temporário de manutenção -->
   <div id="avisoManutencao" style="
   position: fixed;
@@ -455,7 +502,7 @@
         <a class="text-sm text-gray-600 hover:text-[var(--brand-dark)] transition" href="#sustentabilidade">
           Sustentabilidade
         </a>
-        <a class="pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-4 py-2 shadow-sm hover:shadow-md hover:bg-yellow-400 transition"
+        <a class="pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-4 py-2 shadow-sm hover:shadow-md hover:bg-yellow-400 hover:text-[#004400] transition"
           href="#contato">
           Pe&ccedil;a pelo WhatsApp
         </a>
