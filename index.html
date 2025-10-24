@@ -272,7 +272,7 @@
     color: #475569;
   }
 
-  @media (max-width:640px) {
+  @media (max-width:768px) {
     .hero-title {
       font-size: 28px;
     }
@@ -412,6 +412,56 @@
     color: #1a1a1a !important;
     /* texto escuro legível sobre amarelo */
   }
+  @media (max-width: 1024px) {
+  #heroText {
+    margin-top: 0 !important;
+  }
+  #heroVisual {
+    margin-top: 40px !important;
+  }
+}
+@media (max-width: 768px) {
+  #mobileMenu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 9998;
+    overflow-y: auto;
+    padding-top: 20px;
+    display: none;
+    backdrop-filter: blur(6px);
+  }
+
+  #mobileMenu:not(.hidden) {
+    display: flex !important;
+  }
+
+ #mobileMenu a {
+  width: 90%;
+  max-width: 320px;
+  background: #fff;
+  color: #000 !important; /* força preto */
+  text-align: center;
+  padding: 14px 0;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+#mobileMenu a:hover {
+  background: #f1f1f1;
+  color: #000 !important; /* mantém preto mesmo no hover */
+}
+}
+
 </style>
 
 <body class="antialiased">
@@ -745,7 +795,7 @@
             </div>
             <div>
               <h3 class="font-bold text-[var(--brand-dark)]">
-                Ovo Pente &mdash; Caipira
+                Ovo Paint &mdash; Caipira
               </h3>
               <p class="muted text-sm mt-1">
                 Ovos caipiras <strong>em 30 unidades</strong> — coloração intensa e sabor marcante.
