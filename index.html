@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
@@ -7,9 +8,7 @@
   <title>
     Granja Bitencourt - Ovos Caipiras Frescos
   </title>
-  <!-- 🔹 Meta tags SEO -->
-  <meta content="Granja Bitencourt &mdash; ovos caipiras frescos e de alta qualidade em Nova Lima."
-    name="description" />
+  <meta content="Granja Bitencourt — ovos caipiras frescos e de alta qualidade em Nova Lima." name="description" />
   <meta content="ovos caipiras, granja bitencourt, nova lima, ovos frescos" name="keywords" />
   <meta content="Granja Bitencourt - Ovos Caipiras Frescos" property="og:title" />
   <meta content="Produzimos ovos caipiras com qualidade e cuidado." property="og:description" />
@@ -18,8 +17,6 @@
 </head>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 <link href="logo.webp" rel="icon" type="image/webp" />
-<!-- Tailwind CDN -->
-<!-- Chart.js -->
 <style>
   /* força a cor do texto do botão específico no hover */
   a.pill[href="#contato"]:hover {
@@ -215,7 +212,7 @@
 
   .card {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85));
-    box-shadow: 0 8px 30px rgba(10, 10, 10, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
     border-radius: 14px;
   }
 
@@ -249,7 +246,7 @@
     justify-content: center;
     background: none;
     /* remove o círculo amarelo */
-    box-shadow: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
     border: none;
   }
 
@@ -265,7 +262,7 @@
 
   a.cta:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 24px rgba(16, 24, 40, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
   }
 
   .muted {
@@ -285,13 +282,13 @@
     padding: 20px;
     border-radius: 12px;
     background: linear-gradient(180deg, #fff, #fff);
-    box-shadow: 0 12px 40px rgba(2, 6, 23, 0.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
   }
 
   .card:hover {
     transform: translateY(-4px);
     transition: 0.3s ease;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
   }
 
   #como-comprar i {
@@ -324,7 +321,7 @@
     max-height: 85vh;
     max-width: 90vw;
     border-radius: 1rem;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
     transform: scale(0.9);
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
@@ -412,56 +409,60 @@
     color: #1a1a1a !important;
     /* texto escuro legível sobre amarelo */
   }
+
   @media (max-width: 1024px) {
-  #heroText {
-    margin-top: 0 !important;
-  }
-  #heroVisual {
-    margin-top: 40px !important;
-  }
-}
-@media (max-width: 768px) {
-  #mobileMenu {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.6);
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    z-index: 9998;
-    overflow-y: auto;
-    padding-top: 20px;
-    display: none;
-    backdrop-filter: blur(6px);
+    #heroText {
+      margin-top: 0 !important;
+    }
+
+    #heroVisual {
+      margin-top: 40px !important;
+    }
   }
 
-  #mobileMenu:not(.hidden) {
-    display: flex !important;
+  @media (max-width: 768px) {
+    #mobileMenu {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.6);
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 9998;
+      overflow-y: auto;
+      padding-top: 20px;
+      display: none;
+      backdrop-filter: blur(6px);
+    }
+
+    #mobileMenu:not(.hidden) {
+      display: flex !important;
+    }
+
+    #mobileMenu a {
+      width: 90%;
+      max-width: 320px;
+      background: #fff;
+      color: #000 !important;
+      /* força preto */
+      text-align: center;
+      padding: 14px 0;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 18px;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+    }
+
+    #mobileMenu a:hover {
+      background: #f1f1f1;
+      color: #000 !important;
+      /* mantém preto mesmo no hover */
+    }
   }
-
- #mobileMenu a {
-  width: 90%;
-  max-width: 320px;
-  background: #fff;
-  color: #000 !important; /* força preto */
-  text-align: center;
-  padding: 14px 0;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 18px;
-  font-weight: 700;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-}
-
-#mobileMenu a:hover {
-  background: #f1f1f1;
-  color: #000 !important; /* mantém preto mesmo no hover */
-}
-}
-
 </style>
 
 <body class="antialiased">
@@ -481,55 +482,19 @@
       });
     })();
   </script>
-
-  <!-- 🔔 Aviso temporário de manutenção -->
-  <div id="avisoManutencao" style="
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #fff3cd;
-  color: #856404;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 12px 10px;
-  border-bottom: 2px solid #ffeeba;
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-">
-    ⚙️ Nosso site está passando por<strong>melhorias</strong>.
-    Pedimos desculpas por qualquer inconveniente. ⚠️
-    <button onclick="document.getElementById('avisoManutencao').style.display='none'" style="
-    background: none;
-    border: none;
-    font-size: 18px;
-    color: #856404;
-    cursor: pointer;
-    margin-left: 10px;
-  ">❌</button>
-  </div>
-
-  <!-- Script opcional para desaparecer automaticamente após 10 segundos -->
   <script>
     setTimeout(() => {
       const aviso = document.getElementById('avisoManutencao');
       if (aviso) aviso.style.display = 'none';
     }, 10000); // 10 segundos
   </script>
-
-  <!-- CABEÇALHO PROFISSIONAL -->
   <header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300"
     id="mainHeader">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <!-- Logo e nome -->
-      <a class="flex items-center gap-3 group" href="#">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"><a class="flex items-center gap-3 group"
+        href="#">
         <div
           class="w-14 h-14 rounded-full overflow-hidden border-4 border-[var(--brand-yellow)] shadow-md group-hover:scale-105 transition">
-          <img alt="Logo Granja Bitencourt" class="w-full h-full object-cover" src="logo.webp" />
+          <img alt="Logo Granja Bitencourt" class="w-full h-full object-cover" loading="lazy" src="logo.webp" />
         </div>
         <div>
           <div
@@ -537,49 +502,36 @@
             Granja Bitencourt
           </div>
           <div class="text-xs text-gray-500 -mt-1">
-            Ovos caipiras &mdash; Nova Lima
+            Ovos caipiras — Nova Lima
           </div>
         </div>
       </a>
-      <!-- Menu Desktop -->
-      <nav class="hidden md:flex items-center gap-8">
-        <a class="text-sm text-gray-600 hover:text-[var(--brand-dark)] transition" href="#sobre">
+      <nav class="hidden md:flex items-center gap-8"><a
+          class="text-sm text-gray-600 hover:text-[var(--brand-dark)] transition" href="#sobre">
           Sobre
-        </a>
-        <a class="text-sm text-gray-600 hover:text-[var(--brand-dark)] transition" href="#produtos">
+        </a><a class="text-sm text-gray-600 hover:text-[var(--brand-dark)] transition" href="#produtos">
           Produtos
-        </a>
-        <a class="text-sm text-gray-600 hover:text-[var(--brand-dark)] transition" href="#sustentabilidade">
+        </a><a class="text-sm text-gray-600 hover:text-[var(--brand-dark)] transition" href="#sustentabilidade">
           Sustentabilidade
-        </a>
-        <a class="pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-4 py-2 shadow-sm hover:shadow-md hover:bg-yellow-400 hover:text-[#004400] transition"
+        </a><a
+          class="pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-4 py-2 shadow-sm hover:shadow-md hover:bg-yellow-400 hover:text-[#004400] transition"
           href="#contato">
-          Pe&ccedil;a pelo WhatsApp
-        </a>
-      </nav>
-      <!-- Botão Mobile -->
-      <button class="md:hidden text-[var(--brand-dark)] text-2xl focus:outline-none" id="mobileMenuBtn">
-        <i class="fa-solid fa-bars">
-        </i>
-      </button>
+          Peça pelo WhatsApp
+        </a></nav><button class="md:hidden text-[var(--brand-dark)] text-2xl focus:outline-none" id="mobileMenuBtn"><i
+          class="fa-solid fa-bars"></i></button>
     </div>
-    <!-- Menu Mobile -->
     <div class="hidden flex-col items-center bg-white border-t border-gray-200 shadow-lg md:hidden animate-fadeIn"
-      id="mobileMenu">
-      <a class="py-3 text-gray-700 hover:text-[var(--brand-green)] w-full text-center" href="#sobre">
+      id="mobileMenu"><a class="py-3 text-gray-700 hover:text-[var(--brand-green)] w-full text-center" href="#sobre">
         Sobre
-      </a>
-      <a class="py-3 text-gray-700 hover:text-[var(--brand-green)] w-full text-center" href="#produtos">
+      </a><a class="py-3 text-gray-700 hover:text-[var(--brand-green)] w-full text-center" href="#produtos">
         Produtos
-      </a>
-      <a class="py-3 text-gray-700 hover:text-[var(--brand-green)] w-full text-center" href="#sustentabilidade">
+      </a><a class="py-3 text-gray-700 hover:text-[var(--brand-green)] w-full text-center" href="#sustentabilidade">
         Sustentabilidade
-      </a>
-      <a class="py-3 font-bold bg-[var(--brand-yellow)] text-[var(--brand-dark)] w-full text-center hover:bg-yellow-400 transition"
+      </a><a
+        class="py-3 font-bold bg-[var(--brand-yellow)] text-[var(--brand-dark)] w-full text-center hover:bg-yellow-400 transition"
         href="#contato">
-        Pe&ccedil;a pelo WhatsApp
-      </a>
-    </div>
+        Peça pelo WhatsApp
+      </a></div>
   </header>
   <script>
     // Controle do menu móvel
@@ -602,23 +554,18 @@
       }
     });
   </script>
-  <!-- Ajuste para compensar o cabeçalho fixo -->
-  <div class="h-24">
-  </div>
-  <!-- HERO -->
+  <div class="h-24"></div>
   <header class="hero-wave">
     <div class="max-w-6xl mx-auto px-6 pt-6 lg:pt-12 pb-20">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         <div class="fade-in" id="heroText">
           <div class="card p-6 lg:p-10">
             <div class="flex items-center gap-4">
-              <div class="w-14 h-14 rounded-full flex items-center justify-center bg-[var(--brand-green)]">
-                <svg fill="none" height="28" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-                  stroke-width="2" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 3C8 3 4 9 4 13a8 8 0 0 0 16 0c0-4-4-10-8-10z">
-                  </path>
-                </svg>
-              </div>
+              <div class="w-14 h-14 rounded-full flex items-center justify-center bg-[var(--brand-green)]"><svg
+                  fill="none" height="28" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 3C8 3 4 9 4 13a8 8 0 0 0 16 0c0-4-4-10-8-10z"></path>
+                </svg></div>
               <div>
                 <div class="text-xs text-[var(--brand-muted)] uppercase font-semibold">
                   Direto da Granja
@@ -636,23 +583,20 @@
               .
             </h1>
             <p class="muted mt-4 max-w-xl">
-              Galinhas criadas livres, coleta di&aacute;ria e entrega r&aacute;pida para Nova Lima. Apoie
+              Galinhas criadas livres, coleta diária e entrega rápida para Nova Lima. Apoie
               o produtor local e leve para casa ovos mais saborosos e nutritivos.
             </p>
-            <div class="mt-6 flex gap-3 flex-wrap">
-              <a class="cta pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-5 py-3 inline-flex items-center gap-3"
+            <div class="mt-6 flex gap-3 flex-wrap"><a
+                class="cta pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-5 py-3 inline-flex items-center gap-3"
                 href="#" id="orderBtn">
-                Pe&ccedil;a agora pelo WhatsApp
-              </a>
-              <a class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] font-medium px-5 py-3"
+                Peça agora pelo WhatsApp
+              </a><a class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] font-medium px-5 py-3"
                 href="#produtos">
                 Ver
                 produtos
-              </a>
-            </div>
+              </a></div>
           </div>
         </div>
-        <!-- Visual / Product panel -->
         <div class="fade-in" id="heroVisual">
           <div class="card p-6 lg:p-10">
             <div class="flex flex-col gap-4">
@@ -660,28 +604,28 @@
                 <div class="p-6">
                   <div class="flex items-center gap-4">
                     <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-[var(--brand-yellow)] shadow-lg">
-                      <img alt="Logo Granja Bitencourt" class="w-full h-full object-cover" src="logo.webp" />
+                      <img alt="Logo Granja Bitencourt" class="w-full h-full object-cover" loading="lazy"
+                        src="logo.webp" />
                     </div>
                     <div>
                       <div class="text-lg font-bold text-[var(--brand-dark)]">
                         Granja Bitencourt
                       </div>
                       <div class="text-sm muted">
-                        Ovos caipiras &mdash; sabor aut&ecirc;ntico
+                        Ovos caipiras — sabor autêntico
                       </div>
                     </div>
                   </div>
-                  <!-- CARD DE PREÇO -->
                   <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="bg-white p-4 rounded-lg shadow-sm">
                       <div class="text-xs muted">
-                        Pre&ccedil;o
+                        Preço
                       </div>
                       <div class="text-xl font-extrabold text-[var(--brand-dark)] mt-1">
-                        R$ 14 / d&uacute;zia
+                        R$ 14 / dúzia
                       </div>
                       <div class="text-xs muted mt-2">
-                        Embalagem sustent&aacute;vel &bull; Entrega di&aacute;ria
+                        Embalagem sustentável • Entrega diária
                       </div>
                     </div>
                     <div class="bg-white p-4 rounded-lg shadow-sm">
@@ -689,50 +633,37 @@
                         Disponibilidade
                       </div>
                       <div class="text-xl font-bold text-[var(--brand-green)] mt-1">
-                        Produ&ccedil;&atilde;o di&aacute;ria
+                        Produção diária
                       </div>
                       <div class="text-xs muted mt-2">
-                        Pedidos por WhatsApp &bull; Retirada e entrega
+                        Pedidos por WhatsApp • Retirada e entrega
                       </div>
                     </div>
                   </div>
                 </div>
-                <!-- Indicador de produção -->
                 <div class="p-6 border-t border-gray-100 text-center">
-                  <!-- Ícone dinâmico -->
-                  <div class="flex justify-center mb-4 text-6xl transition-all duration-300" id="carinhaStatus">
-                    <i class="fa-solid fa-face-meh text-yellow-500" id="carinhaIcon">
-                    </i>
-                  </div>
-                  <!-- Número em destaque -->
+                  <div class="flex justify-center mb-4 text-6xl transition-all duration-300" id="carinhaStatus"><i
+                      class="fa-solid fa-face-meh text-yellow-500" id="carinhaIcon"></i></div>
                   <div>
                     <h3 class="text-3xl font-extrabold text-[var(--brand-dark)]">
-                      Taxa de Produ&ccedil;&atilde;o
+                      Taxa de Produção
                     </h3>
                     <div class="text-5xl font-extrabold mt-2" id="taxaNumero">
                       --%
                     </div>
-                    <p class="text-sm mt-1 text-gray-600 flex items-center justify-center gap-2" id="taxaStatus">
-                      <i class="fa-solid fa-spinner animate-spin text-gray-400" id="statusIcon">
-                      </i>
-                      <span>
+                    <p class="text-sm mt-1 text-gray-600 flex items-center justify-center gap-2" id="taxaStatus"><i
+                        class="fa-solid fa-spinner animate-spin text-gray-400" id="statusIcon"></i><span>
                         Calculando...
-                      </span>
-                    </p>
+                      </span></p>
                   </div>
-                  <!-- Fila de espera -->
                   <div
                     class="mt-6 inline-block px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md mx-auto"
-                    id="filaDeEspera">
-                    <i class="fa-solid fa-clock mr-2" id="filaIcon">
-                    </i>
-                    <span id="filaTexto">
+                    id="filaDeEspera"><i class="fa-solid fa-clock mr-2" id="filaIcon"></i><span id="filaTexto">
                       Verificando disponibilidade...
-                    </span>
-                  </div>
+                    </span></div>
                 </div>
                 <div class="mt-4 text-sm muted">
-                  * Valores e disponibilidade sujeitos a modifica&ccedil;&atilde;o, confirma&ccedil;&atilde;o via
+                  * Valores e disponibilidade sujeitos a modificação, confirmação via
                   WhatsApp.
                 </div>
               </div>
@@ -742,9 +673,7 @@
       </div>
     </div>
   </header>
-  <!-- KEY SECTIONS -->
   <main class="max-w-6xl mx-auto px-6 py-12">
-    <!-- Produtos / Highlights -->
     <section class="fade-up card p-6 lg:p-10 mb-8" id="produtos">
       <div class="flex items-center justify-between">
         <div>
@@ -752,75 +681,62 @@
             Nossos Produtos
           </h2>
           <p class="muted mt-2">
-            Ovos caipiras, por qualidade e sabor &mdash; embalagens sustent&aacute;veis e entregas locais.
+            Ovos caipiras, por qualidade e sabor — embalagens sustentáveis e entregas locais.
           </p>
         </div>
       </div>
-
       <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Produto 1: Dúzia -->
         <article class="p-4 rounded-lg border border-gray-100">
           <div class="flex items-start gap-3">
             <div class="w-14 h-14 rounded-md flex items-center justify-center"
-              style="background:linear-gradient(180deg,var(--egg-brown), #b7633f);">
-              <i class="fa-solid fa-egg text-white text-2xl"></i>
-            </div>
+              style="background:linear-gradient(180deg,var(--egg-brown), #b7633f);"><i
+                class="fa-solid fa-egg text-white text-2xl"></i></div>
             <div>
               <h3 class="font-bold text-[var(--brand-dark)]">
-                Ovo D&uacute;zia &mdash; Caipira
+                Ovo Dúzia — Caipira
               </h3>
               <p class="muted text-sm mt-1">
-                Embalagem <strong>12 unidades</strong> &mdash; ra&ccedil;&atilde;o natural e manejo livre.
+                Embalagem <strong>12 unidades</strong> — ração natural e manejo livre.
               </p>
-              <div class="mt-3 flex gap-2">
-                <button class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1"
+              <div class="mt-3 flex gap-2"><button
+                  class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1"
                   onclick="openOrder('Ovo Dúzia — Caipira')">
                   Pedir
-                </button>
-                <button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted"
+                </button><button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted"
                   onclick="showDetails('Ovo Dúzia — Caipira')">
                   Detalhes
-                </button>
-              </div>
+                </button></div>
             </div>
           </div>
         </article>
-
-        <!-- Produto 2: Ovo Paint – Caipira -->
         <article class="p-4 rounded-lg border border-gray-100">
           <div class="flex items-start gap-3">
             <div class="w-14 h-14 rounded-md flex items-center justify-center"
-              style="background:linear-gradient(180deg,var(--egg-brown), #b7633f);">
-              <i class="fa-solid fa-egg text-white text-2xl"></i>
-            </div>
+              style="background:linear-gradient(180deg,var(--egg-brown), #b7633f);"><i
+                class="fa-solid fa-egg text-white text-2xl"></i></div>
             <div>
               <h3 class="font-bold text-[var(--brand-dark)]">
-                Ovo Paint &mdash; Caipira
+                Ovo Paint — Caipira
               </h3>
               <p class="muted text-sm mt-1">
                 Ovos caipiras <strong>em 30 unidades</strong> — coloração intensa e sabor marcante.
               </p>
-              <div class="mt-3 flex gap-2">
-                <button class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1"
+              <div class="mt-3 flex gap-2"><button
+                  class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1"
                   onclick="openOrder('Ovo Paint — Caipira')">
                   Pedir
-                </button>
-                <button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted"
+                </button><button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted"
                   onclick="showDetails('Ovo Paint — Caipira')">
                   Detalhes
-                </button>
-              </div>
+                </button></div>
             </div>
           </div>
         </article>
-
-        <!-- Produto 3: Caixa Fechada -->
         <article class="p-4 rounded-lg border border-gray-100">
           <div class="flex items-start gap-3">
             <div class="w-14 h-14 rounded-md flex items-center justify-center"
-              style="background:linear-gradient(180deg,var(--brand-green), #2a6a34);">
-              <i class="fa-solid fa-box-open text-white text-3xl"></i>
-            </div>
+              style="background:linear-gradient(180deg,var(--brand-green), #2a6a34);"><i
+                class="fa-solid fa-box-open text-white text-3xl"></i></div>
             <div>
               <h3 class="font-bold text-[var(--brand-dark)]">
                 Caixa Fechada
@@ -828,27 +744,22 @@
               <p class="muted text-sm mt-1">
                 Ideal para grandes pedidos. — disponível apenas para compras a partir de <strong>60 ovos</strong>.
               </p>
-              <div class="mt-3 flex gap-2">
-                <button class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1"
+              <div class="mt-3 flex gap-2"><button
+                  class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1"
                   onclick="openOrder('Caixa Fechada')">
                   Pedir
-                </button>
-                <button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted"
+                </button><button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted"
                   onclick="showDetails('Caixa Fechada')">
                   Detalhes
-                </button>
-              </div>
+                </button></div>
             </div>
           </div>
         </article>
-
-        <!-- Produto 4: Assinatura -->
         <article class="p-4 rounded-lg border border-gray-100">
           <div class="flex items-start gap-3">
             <div class="w-14 h-14 rounded-md flex items-center justify-center"
-              style="background:linear-gradient(180deg,var(--brand-yellow), #ffd57a);">
-              <i class="fa-solid fa-calendar-week text-[var(--brand-dark)] text-2xl"></i>
-            </div>
+              style="background:linear-gradient(180deg,var(--brand-yellow), #ffd57a);"><i
+                class="fa-solid fa-calendar-week text-[var(--brand-dark)] text-2xl"></i></div>
             <div>
               <h3 class="font-bold text-[var(--brand-dark)]">
                 Assinatura Semanal
@@ -856,22 +767,19 @@
               <p class="muted text-sm mt-1">
                 Receba ovos frescos <strong>toda semana em sua casa</strong>, com entrega direta da granja.
               </p>
-              <div class="mt-3 flex gap-2">
-                <button class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1"
+              <div class="mt-3 flex gap-2"><button
+                  class="pill border border-[var(--brand-muted)] text-[var(--brand-dark)] px-3 py-1"
                   onclick="openOrder('Assinatura Semanal')">
                   Pedir
-                </button>
-                <button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted"
+                </button><button class="pill text-sm bg-white border border-gray-200 px-3 py-1 muted"
                   onclick="showDetails('Assinatura Semanal')">
                   Detalhes
-                </button>
-              </div>
+                </button></div>
             </div>
           </div>
         </article>
       </div>
     </section>
-    <!-- Seção Como Comprar -->
     <section
       class="fade-up card p-8 lg:p-12 mb-12 bg-gradient-to-br from-white via-[var(--brand-light)] to-[#fef9e7] rounded-2xl shadow-md"
       id="como-comprar">
@@ -880,16 +788,14 @@
           Como Comprar
         </h2>
         <p class="muted mt-3 text-lg">
-          Fazer seu pedido com a Granja Bitencourt &eacute; simples e r&aacute;pido 🐔
+          Fazer seu pedido com a Granja Bitencourt é simples e rápido 🐔
         </p>
       </div>
       <div class="grid md:grid-cols-3 gap-6 mt-6 text-center">
-        <!-- Etapa 1 -->
         <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
           <div
             class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-yellow)] text-[var(--brand-dark)] text-2xl shadow-md mb-4">
-            <i class="fa-brands fa-whatsapp">
-            </i>
+            <i class="fa-brands fa-whatsapp"></i>
           </div>
           <h3 class="font-bold text-lg text-[var(--brand-dark)]">
             1. Entre em contato
@@ -902,12 +808,10 @@
             .
           </p>
         </div>
-        <!-- Etapa 2 -->
         <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
           <div
             class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-green)] text-white text-2xl shadow-md mb-4">
-            <i class="fa-solid fa-clipboard-list">
-            </i>
+            <i class="fa-solid fa-clipboard-list"></i>
           </div>
           <h3 class="font-bold text-lg text-[var(--brand-dark)]">
             2. Informe o pedido
@@ -919,17 +823,15 @@
             </strong>
             e o
             <strong>
-              endere&ccedil;o de entrega
+              endereço de entrega
             </strong>
             .
           </p>
         </div>
-        <!-- Etapa 3 -->
         <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
           <div
             class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-dark)] text-white text-2xl shadow-md mb-4">
-            <i class="fa-solid fa-truck">
-            </i>
+            <i class="fa-solid fa-truck"></i>
           </div>
           <h3 class="font-bold text-lg text-[var(--brand-dark)]">
             3. Receba com comodidade
@@ -941,52 +843,44 @@
             </strong>
             e o
             <strong>
-              hor&aacute;rio
+              horário
             </strong>
-            da entrega para voc&ecirc; receber tudo
+            da entrega para você receber tudo
             fresquinho.
           </p>
         </div>
       </div>
     </section>
-    <!-- Charts / Interactive -->
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
       <div class="card p-6">
         <h3 class="text-lg font-bold">
           Comparativo Nutricional
         </h3>
         <p class="muted text-sm mt-2">
-          Valores comparativos ilustrativos &mdash; consulte r&oacute;tulos e an&aacute;lises oficiais para
+          Valores comparativos ilustrativos — consulte rótulos e análises oficiais para
           dados laboratoriais.
         </p>
-        <div class="mt-4">
-          <canvas height="260" id="nutritionChart">
-          </canvas>
-        </div>
+        <div class="mt-4"><canvas height="260" id="nutritionChart"></canvas></div>
       </div>
       <div class="card p-6">
         <h3 class="text-lg font-bold">
-          Comparativo de pre&ccedil;o da d&uacute;zia
+          Comparativo de preço da dúzia
         </h3>
         <p class="muted text-sm mt-2">
-          Veja como o pre&ccedil;o da Granja Bitencourt se compara aos principais supermercados de
+          Veja como o preço da Granja Bitencourt se compara aos principais supermercados de
           Minas Gerais.
         </p>
-        <div class="mt-4">
-          <canvas height="260" id="priceComparisonChart">
-          </canvas>
-        </div>
+        <div class="mt-4"><canvas height="260" id="priceComparisonChart"></canvas></div>
       </div>
     </section>
-    <!-- Sustainability -->
     <section class="card p-6 mb-8" id="sustentabilidade">
       <div class="flex flex-col lg:flex-row gap-6 items-center">
         <div class="flex-1">
           <h3 class="text-2xl font-extrabold">
-            Sustentabilidade e Boas Pr&aacute;ticas
+            Sustentabilidade e Boas Práticas
           </h3>
           <p class="muted mt-2">
-            Adotamos pr&aacute;ticas de biosseguran&ccedil;a, reaproveitamento de cama e compostagem para reduzir
+            Adotamos práticas de biossegurança, reaproveitamento de cama e compostagem para reduzir
             impacto ambiental.
           </p>
           <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -1003,23 +897,23 @@
                 Economia Circular
               </div>
               <div class="text-xs muted">
-                Prioridade a fornecedores locais e embalagens reutiliz&aacute;veis.
+                Prioridade a fornecedores locais e embalagens reutilizáveis.
               </div>
             </li>
             <li class="p-3 rounded-md border border-gray-100">
               <div class="font-semibold">
-                Sa&uacute;de Animal
+                Saúde Animal
               </div>
               <div class="text-xs muted">
-                Boas pr&aacute;ticas e monitoramento di&aacute;rio para aves saud&aacute;veis.
+                Boas práticas e monitoramento diário para aves saudáveis.
               </div>
             </li>
             <li class="p-3 rounded-md border border-gray-100">
               <div class="font-semibold">
-                Transpar&ecirc;ncia
+                Transparência
               </div>
               <div class="text-xs muted">
-                Relat&oacute;rios e controles internos conforme o manual da granja.
+                Relatórios e controles internos conforme o manual da granja.
               </div>
             </li>
           </ul>
@@ -1031,7 +925,7 @@
               Certificado Interno
             </div>
             <div class="text-3xl font-extrabold text-[var(--brand-green)] mt-2">
-              Boas Pr&aacute;ticas
+              Boas Práticas
             </div>
             <div class="text-xs muted mt-2">
               Auditorias internas, controle de qualidade e rastreabilidade.
@@ -1040,20 +934,17 @@
         </div>
       </div>
     </section>
-    <!-- Galeria de Fotos da Granja -->
     <section class="fade-up card p-6 lg:p-10 mb-12" id="galeria">
       <h2 class="text-2xl font-extrabold text-[var(--brand-dark)]">
         📸 Nossa Granja
       </h2>
       <p class="muted mt-2">
-        Conhe&ccedil;a um pouco mais do cuidado e da produ&ccedil;&atilde;o da Granja Bitencourt.
+        Conheça um pouco mais do cuidado e da produção da Granja Bitencourt.
       </p>
       <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <!-- Foto 1 -->
-        <div class="relative overflow-hidden rounded-2xl group cursor-pointer">
-          <img alt="Galinhas na &aacute;rea externa"
+        <div class="relative overflow-hidden rounded-2xl group cursor-pointer"><img alt="Galinhas na área externa"
             class="w-full h-56 object-cover transform transition-transform duration-700 group-hover:scale-110 group-hover:brightness-110"
-            src="1.webp" />
+            loading="lazy" src="1.webp" />
           <div
             class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-3">
             <span class="text-white text-sm font-semibold">
@@ -1061,11 +952,9 @@
             </span>
           </div>
         </div>
-        <!-- Foto 2 -->
-        <div class="relative overflow-hidden rounded-2xl group cursor-pointer">
-          <img alt="Ninho com ovos frescos"
+        <div class="relative overflow-hidden rounded-2xl group cursor-pointer"><img alt="Ninho com ovos frescos"
             class="w-full h-56 object-cover transform transition-transform duration-700 group-hover:scale-110 group-hover:brightness-110"
-            src="2.webp" />
+            loading="lazy" src="2.webp" />
           <div
             class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-3">
             <span class="text-white text-sm font-semibold">
@@ -1073,11 +962,9 @@
             </span>
           </div>
         </div>
-        <!-- Foto 3 -->
-        <div class="relative overflow-hidden rounded-2xl group cursor-pointer">
-          <img alt="Vista geral do galinheiro"
+        <div class="relative overflow-hidden rounded-2xl group cursor-pointer"><img alt="Vista geral do galinheiro"
             class="w-full h-56 object-cover transform transition-transform duration-700 group-hover:scale-110 group-hover:brightness-110"
-            src="3.webp" />
+            loading="lazy" src="3.webp" />
           <div
             class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-3">
             <span class="text-white text-sm font-semibold">
@@ -1085,41 +972,29 @@
             </span>
           </div>
         </div>
-        <!-- Foto 4 -->
-        <div class="relative overflow-hidden rounded-2xl group cursor-pointer">
-          <img alt="Galinhas alimentando-se"
+        <div class="relative overflow-hidden rounded-2xl group cursor-pointer"><img alt="Galinhas alimentando-se"
             class="w-full h-56 object-cover object-center transform transition-transform duration-700 group-hover:scale-110 group-hover:brightness-110"
-            src="4.webp" />
+            loading="lazy" src="4.webp" />
           <div
             class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-3">
             <span class="text-white text-sm font-semibold">
-              Momento de alimenta&ccedil;&atilde;o
+              Momento de alimentação
             </span>
           </div>
         </div>
       </div>
     </section>
-    <!-- Modal / Lightbox -->
-    <!-- 🔍 Lightbox Moderno -->
     <div class="hidden" id="lightbox">
       <div class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50"
-        id="lightboxOverlay">
-        <img alt="Imagem ampliada"
+        id="lightboxOverlay"><img alt="Imagem ampliada"
           class="max-h-[85vh] max-w-[90vw] rounded-2xl shadow-2xl border-4 border-white transform transition-transform duration-300 scale-95 opacity-0"
-          id="lightboxImg" src="" />
-      </div>
+          id="lightboxImg" loading="lazy" src="" /></div>
     </div>
-    <!-- Seção Sobre a Granja -->
     <section
       class="fade-up card p-8 lg:p-12 mb-12 bg-gradient-to-br from-white via-[var(--brand-light)] to-[#fef9e7] rounded-2xl shadow-md"
       id="sobre">
       <div class="flex flex-col lg:flex-row items-center gap-8">
-        <!-- Ícone / Ilustração -->
-        <div class="flex-shrink-0 text-[var(--brand-green)]">
-          <i class="fa-solid fa-egg text-6xl">
-          </i>
-        </div>
-        <!-- Texto -->
+        <div class="flex-shrink-0 text-[var(--brand-green)]"><i class="fa-solid fa-egg text-6xl"></i></div>
         <div>
           <h2 class="text-3xl font-extrabold text-[var(--brand-dark)] mb-3">
             Sobre a Granja Bitencourt
@@ -1131,7 +1006,7 @@
             </strong>
             atua em
             <strong>
-              Nova Lima &ndash; MG
+              Nova Lima – MG
             </strong>
             , produzindo
             <strong>
@@ -1152,18 +1027,18 @@
             .
           </p>
           <p class="text-gray-700 leading-relaxed mb-4">
-            Cada etapa do nosso trabalho &eacute; guiada por um
+            Cada etapa do nosso trabalho é guiada por um
             <strong>
-              manual interno de boas pr&aacute;ticas
+              manual interno de boas práticas
             </strong>
             ,
-            que estabelece padr&otilde;es de
+            que estabelece padrões de
             <strong>
-              manejo respons&aacute;vel
+              manejo responsável
             </strong>
             ,
             <strong>
-              biosseguran&ccedil;a
+              biossegurança
             </strong>
             ,
             <strong>
@@ -1171,23 +1046,23 @@
             </strong>
             e
             <strong>
-              gest&atilde;o financeira
+              gestão financeira
             </strong>
             , garantindo uma
-            produ&ccedil;&atilde;o
+            produção
             <strong>
-              &eacute;tica, segura e constante
+              ética, segura e constante
             </strong>
             .
           </p>
           <p class="text-gray-700 leading-relaxed mb-4">
-            Nosso compromisso &eacute; entregar
+            Nosso compromisso é entregar
             <strong>
-              ovos sempre frescos e saud&aacute;veis
+              ovos sempre frescos e saudáveis
             </strong>
             , mantendo a
             <strong>
-              confian&ccedil;a de quem valoriza alimentos de origem consciente
+              confiança de quem valoriza alimentos de origem consciente
             </strong>
             .
           </p>
@@ -1214,14 +1089,10 @@
         </div>
       </div>
     </section>
-    <!-- Seção Linhagem -->
     <section class="fade-up card p-8 lg:p-12 mb-12 bg-gradient-to-br from-[#f8fff8] to-[#ffffff] rounded-2xl shadow-md"
       id="linhagem">
       <div class="flex flex-col lg:flex-row items-center gap-8">
-        <div class="flex-shrink-0 text-[var(--brand-green)]">
-          <i class="fa-solid fa-dna text-6xl">
-          </i>
-        </div>
+        <div class="flex-shrink-0 text-[var(--brand-green)]"><i class="fa-solid fa-dna text-6xl"></i></div>
         <div>
           <h2 class="text-3xl font-extrabold text-[var(--brand-dark)] mb-3">
             Linhagem das Nossas Galinhas
@@ -1238,7 +1109,7 @@
             </strong>
             ,
             <strong>
-              resist&ecirc;ncia
+              resistência
             </strong>
             e pela
             <strong>
@@ -1248,20 +1119,20 @@
             .
           </p>
           <p class="text-gray-700 leading-relaxed mb-4">
-            As galinhas Isa Brown s&atilde;o conhecidas por sua
+            As galinhas Isa Brown são conhecidas por sua
             <strong>
               docilidade
             </strong>
             e
             <strong>
-              &oacute;tima adapta&ccedil;&atilde;o ao manejo
+              ótima adaptação ao manejo
               caipira
             </strong>
             ,
             garantindo bem-estar animal e excelente desempenho em sistemas livres.
           </p>
           <p class="text-gray-700 leading-relaxed">
-            O resultado s&atilde;o ovos com
+            O resultado são ovos com
             <strong>
               gema mais intensa
             </strong>
@@ -1280,29 +1151,24 @@
         </div>
       </div>
     </section>
-    <!-- Seção de Contato -->
     <section class="fade-in card p-6 lg:p-10 mb-12" id="contato">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-        <!-- Coluna de informações -->
         <div>
           <h2 class="text-2xl font-extrabold text-[var(--brand-dark)]">
             Fale Conosco
           </h2>
           <p class="muted mt-2">
-            Entre em contato conosco para pedidos, d&uacute;vidas ou informa&ccedil;&otilde;es sobre entregas.
+            Entre em contato conosco para pedidos, dúvidas ou informações sobre entregas.
           </p>
-          <div class="mt-6 space-y-4">
-            <a class="pill bg-[var(--brand-green)] hover:bg-green-600 transition text-white font-bold px-6 py-3 inline-flex items-center gap-3 shadow-md"
-              href="https://wa.me/5531996605864" id="whatsMain" target="_blank">
-              <i class="fa-brands fa-whatsapp text-2xl">
-              </i>
+          <div class="mt-6 space-y-4"><a
+              class="pill bg-[var(--brand-green)] hover:bg-green-600 transition text-white font-bold px-6 py-3 inline-flex items-center gap-3 shadow-md"
+              href="https://wa.me/5531996605864" id="whatsMain" target="_blank"><i
+                class="fa-brands fa-whatsapp text-2xl"></i>
               Falar pelo WhatsApp
-            </a>
-            <!-- Botão para enviar e-mail automaticamente -->
-            <a class="pill bg-[var(--brand-yellow)] hover:bg-yellow-400 transition text-[var(--brand-dark)] font-bold px-6 py-3 inline-flex items-center gap-3 shadow-md"
-              href="mailto:bitencourtgranja@gmail.com?subject=Pedido%20de%20Ovos%20Caipiras&amp;body=Ol&aacute;%20Granja%20Bitencourt,%0D%0A%0D%0AQuero%20fazer%20um%20pedido%20de%20ovos.%20Segue%20meus%20dados:%0D%0A%0D%0ANome:%0D%0AEndere&ccedil;o:%0D%0AQuantidade:%0D%0A%0D%0AObrigado!">
-              <i class="fa-solid fa-envelope text-lg">
-              </i>
+            </a><a
+              class="pill bg-[var(--brand-yellow)] hover:bg-yellow-400 transition text-[var(--brand-dark)] font-bold px-6 py-3 inline-flex items-center gap-3 shadow-md"
+              href="mailto:bitencourtgranja@gmail.com?subject=Pedido%20de%20Ovos%20Caipiras&amp;body=Olá%20Granja%20Bitencourt,%0D%0A%0D%0AQuero%20fazer%20um%20pedido%20de%20ovos.%20Segue%20meus%20dados:%0D%0A%0D%0ANome:%0D%0AEndereço:%0D%0AQuantidade:%0D%0A%0D%0AObrigado!"><i
+                class="fa-solid fa-envelope text-lg"></i>
               Enviar E-mail
             </a>
             <div class="text-sm text-gray-600">
@@ -1310,50 +1176,39 @@
                 📍 Nova Lima - MG
               </p>
               <p>
-                🕒 Atendimento: segunda a s&aacute;bado, 8h &agrave;s 17h
+                🕒 Atendimento: segunda a sábado, 8h às 17h
               </p>
             </div>
           </div>
         </div>
-        <!-- Coluna do formulário -->
         <div>
           <form class="space-y-4 bg-white rounded-2xl shadow-inner p-6" id="contactForm">
             <h3 class="text-lg font-semibold text-[var(--brand-dark)] mb-2">
               Envie sua mensagem
             </h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <input
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><input
                 class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-green)]"
-                name="nome" placeholder="Seu nome" required="" />
-              <input
+                name="nome" placeholder="Seu nome" required="" /><input
                 class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-green)]"
-                name="telefone" placeholder="Telefone (WhatsApp)" required="" />
-            </div>
-            <textarea
+                name="telefone" placeholder="Telefone (WhatsApp)" required="" /></div><textarea
               class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-green)]"
-              name="mensagem" placeholder="Mensagem / pedido (ex: 2 d&uacute;zias, entrega amanh&atilde;)" required=""
-              rows="3">
-        </textarea>
-            <div class="flex flex-wrap gap-3">
-              <button class="pill bg-[var(--brand-green)] hover:bg-green-600 text-white px-5 py-2 transition"
-                type="submit">
+              name="mensagem" placeholder="Mensagem / pedido (ex: 2 dúzias, entrega amanhã)" required=""
+              rows="3"></textarea>
+            <div class="flex flex-wrap gap-3"><button
+                class="pill bg-[var(--brand-green)] hover:bg-green-600 text-white px-5 py-2 transition" type="submit">
                 Enviar pedido via WhatsApp
-              </button>
-              <button class="pill border border-gray-200 hover:bg-gray-100 px-5 py-2 transition" type="reset">
+              </button><button class="pill border border-gray-200 hover:bg-gray-100 px-5 py-2 transition" type="reset">
                 Limpar
-              </button>
-            </div>
+              </button></div>
             <p class="text-xs muted mt-2">
-              🔒 Suas informa&ccedil;&otilde;es s&atilde;o usadas apenas para contato direto via WhatsApp.
+              🔒 Suas informações são usadas apenas para contato direto via WhatsApp.
             </p>
           </form>
         </div>
       </div>
     </section>
-    <!-- Rodapé -->
     <footer class="bg-[var(--brand-dark)] text-white py-10">
       <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Coluna 1: Marca -->
         <div>
           <h3 class="font-extrabold text-lg">
             Granja Bitencourt
@@ -1366,7 +1221,6 @@
             .
           </p>
         </div>
-        <!-- Coluna 2: Contato -->
         <div>
           <h4 class="font-semibold text-md mb-2">
             Contato
@@ -1388,52 +1242,33 @@
               📍 Nova Lima - MG
             </li>
             <li>
-              🕒 Atendimento: 8h &agrave;s 17h
+              🕒 Atendimento: 8h às 17h
             </li>
           </ul>
         </div>
-        <!-- Coluna 3: Redes sociais -->
         <div>
-          <div class="flex items-center justify-start md:justify-center gap-4">
-          </div>
+          <div class="flex items-center justify-start md:justify-center gap-4"></div>
           <h4 class="font-semibold text-md mb-2">
             Siga-nos
           </h4>
-          <div class="flex items-center gap-4">
-            <a aria-label="Instagram" class="hover:text-[var(--brand-yellow)] transition"
-              href="https://www.instagram.com/GranjaBitencourt" rel="noopener" target="_blank" title="Instagram">
-              <i class="fa-brands fa-instagram text-xl">
-              </i>
-            </a>
-            <a aria-label="WhatsApp" class="hover:text-[var(--brand-yellow)] transition"
-              href="https://wa.me/5531996605864" rel="noopener" target="_blank" title="WhatsApp">
-              <i class="fa-brands fa-whatsapp text-xl">
-              </i>
-            </a>
-            <a aria-label="E-mail" class="hover:text-[var(--brand-yellow)] transition"
-              href="mailto:bitencourtgranja@gmail.com" title="E-mail">
-              <i class="fa-solid fa-envelope text-xl">
-              </i>
-            </a>
-            <!-- YouTube: substitua a URL pelo canal/caminho correto se necessário -->
-            <a aria-label="YouTube" class="hover:text-[var(--brand-yellow)] transition"
-              href="https://www.youtube.com/@GranjaBitencourt" rel="noopener" target="_blank" title="YouTube">
-              <i class="fa-brands fa-youtube text-xl">
-              </i>
-            </a>
-          </div>
+          <div class="flex items-center gap-4"><a aria-label="Instagram"
+              class="hover:text-[var(--brand-yellow)] transition" href="https://www.instagram.com/GranjaBitencourt"
+              rel="noopener" target="_blank" title="Instagram"><i class="fa-brands fa-instagram text-xl"></i></a><a
+              aria-label="WhatsApp" class="hover:text-[var(--brand-yellow)] transition"
+              href="https://wa.me/5531996605864" rel="noopener" target="_blank" title="WhatsApp"><i
+                class="fa-brands fa-whatsapp text-xl"></i></a><a aria-label="E-mail"
+              class="hover:text-[var(--brand-yellow)] transition" href="mailto:bitencourtgranja@gmail.com"
+              title="E-mail"><i class="fa-solid fa-envelope text-xl"></i></a><a aria-label="YouTube"
+              class="hover:text-[var(--brand-yellow)] transition" href="https://www.youtube.com/@GranjaBitencourt"
+              rel="noopener" target="_blank" title="YouTube"><i class="fa-brands fa-youtube text-xl"></i></a></div>
         </div>
-        <!-- Linha inferior -->
         <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-400">
-          &copy;
-          <span id="year">
-          </span>
-          Granja Bitencourt &mdash; Todos os direitos reservados.
+          ©
+          <span id="year"></span>
+          Granja Bitencourt — Todos os direitos reservados.
         </div>
       </div>
     </footer>
-    <!-- Atualiza o ano automaticamente -->
-    <!-- Modal / Order -->
     <div class="fixed inset-0 bg-black bg-opacity-40 hidden overflow-y-auto z-50" id="orderModal">
       <div class="modal-card card mx-auto my-16 max-w-lg w-[90%]">
         <div class="flex items-start justify-between">
@@ -1444,25 +1279,18 @@
             <div class="muted text-sm">
               Vamos preparar a mensagem para o WhatsApp
             </div>
-          </div>
-          <button class="text-muted" id="closeModal">
+          </div><button class="text-muted" id="closeModal">
             ✕
           </button>
         </div>
-        <form class="mt-4 space-y-3" id="orderForm">
-          <input class="w-full p-3 rounded border border-gray-200" id="itemName"
-            placeholder="Produto (ex: D&uacute;zia &mdash; Caipira)" required="" />
-          <div class="grid grid-cols-2 gap-3">
-            <input class="w-full p-3 rounded border border-gray-200" id="qty" min="1" placeholder="Quantidade"
-              type="number" value="1" />
-            <input class="w-full p-3 rounded border border-gray-200" id="delivery" placeholder="Data da entrega" />
-          </div>
-          <!-- Duração só para assinatura -->
-          <div class="hidden" id="durationField">
-            <label class="text-sm muted">
-              Dura&ccedil;&atilde;o da assinatura
-            </label>
-            <select class="w-full p-3 rounded border border-gray-200" id="duration">
+        <form class="mt-4 space-y-3" id="orderForm"><input class="w-full p-3 rounded border border-gray-200"
+            id="itemName" placeholder="Produto (ex: Dúzia — Caipira)" required="" />
+          <div class="grid grid-cols-2 gap-3"><input class="w-full p-3 rounded border border-gray-200" id="qty" min="1"
+              placeholder="Quantidade" type="number" value="1" /><input
+              class="w-full p-3 rounded border border-gray-200" id="delivery" placeholder="Data da entrega" /></div>
+          <div class="hidden" id="durationField"><label class="text-sm muted">
+              Duração da assinatura
+            </label><select class="w-full p-3 rounded border border-gray-200" id="duration">
               <option value="">
                 Escolha (ex: 1 semana)
               </option>
@@ -1502,51 +1330,35 @@
               <option value="12 semanas">
                 12 semanas
               </option>
-            </select>
-          </div>
-          <input class="w-full p-3 rounded border border-gray-200" id="clientName" placeholder="Seu nome" />
-          <input class="w-full p-3 rounded border border-gray-200" id="clientPhone" placeholder="Telefone (WhatsApp)" />
-          <div class="flex gap-2">
-            <button class="pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-4 py-2" type="submit">
+            </select></div><input class="w-full p-3 rounded border border-gray-200" id="clientName"
+            placeholder="Seu nome" /><input class="w-full p-3 rounded border border-gray-200" id="clientPhone"
+            placeholder="Telefone (WhatsApp)" />
+          <div class="flex gap-2"><button
+              class="pill bg-[var(--brand-yellow)] text-[var(--brand-dark)] font-bold px-4 py-2" type="submit">
               Abrir no
               WhatsApp
-            </button>
-            <button class="pill border border-gray-200 px-4 py-2" id="modalCancel" type="button">
+            </button><button class="pill border border-gray-200 px-4 py-2" id="modalCancel" type="button">
               Cancelar
-            </button>
-          </div>
+            </button></div>
         </form>
       </div>
     </div>
-    <!-- Modal de Detalhes -->
     <div class="fixed inset-0 bg-black bg-opacity-40 hidden overflow-y-auto z-50" id="detailsModal">
-      <div class="modal-card card relative mx-auto my-16 max-w-lg w-[90%]">
-        <button class="absolute top-4 right-4 text-muted" id="closeDetails">
+      <div class="modal-card card relative mx-auto my-16 max-w-lg w-[90%]"><button
+          class="absolute top-4 right-4 text-muted" id="closeDetails">
           ✕
         </button>
-        <h3 class="text-2xl font-bold text-[var(--brand-dark)] mb-2" id="detailsTitle">
-        </h3>
-        <p class="muted text-sm" id="detailsText">
-        </p>
-        <div class="mt-4 text-sm muted" id="detailsExtra">
-        </div>
+        <h3 class="text-2xl font-bold text-[var(--brand-dark)] mb-2" id="detailsTitle"></h3>
+        <p class="muted text-sm" id="detailsText"></p>
+        <div class="mt-4 text-sm muted" id="detailsExtra"></div>
       </div>
-    </div>
-    <!-- Scripts -->
-    <!-- Botão flutuante do WhatsApp -->
-    <a aria-label="WhatsApp"
+    </div><a aria-label="WhatsApp"
       class="fixed bottom-20 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition"
-      href="https://wa.me/5531996605864" target="_blank">
-      <i class="fa-brands fa-whatsapp text-2xl">
-      </i>
-    </a>
+      href="https://wa.me/5531996605864" target="_blank"><i class="fa-brands fa-whatsapp text-2xl"></i></a>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0">
-  </script>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js">
-  </script>
+  <script defer="True" src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+  <script defer="True" src="https://cdn.tailwindcss.com"></script>
+  <script defer="True" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     // Faz os elementos com classe .fade-up aparecerem suavemente ao rolar a página
     window.addEventListener("scroll", () => {
@@ -1860,8 +1672,7 @@
         const stockPercent = 100 - freshPercent;
         return [Number(freshPercent.toFixed(2)), Number(stockPercent.toFixed(2))];
       }
-
-      // 1) Gráfico Comparativo Nutricional (igual ao original) - animação desligada
+      // 1) Gráfico Comparativo Nutricional 
       new Chart(document.getElementById('nutritionChart'), {
         type: 'bar',
         data: {
@@ -1903,28 +1714,6 @@
         }
       });
 
-      // 3) Gráfico Frescos / Estoque (doughnut) — sem animação
-      const freshnessChart = new Chart(document.getElementById('freshnessChart'), {
-        type: 'doughnut',
-        data: {
-          labels: ['Frescos', 'Em estoque'],
-          datasets: [{
-            data: calculateFreshnessData(productionData),
-            backgroundColor: [brandGreen, '#E2E8F0']
-          }]
-        },
-        options: {
-          responsive: true,
-          cutout: '70%',
-          animation: false,
-          plugins: {
-            legend: { display: true, position: 'bottom' },
-            title: { display: true, text: 'Proporção: ovos frescos x em estoque' },
-            tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.parsed}%` } }
-          }
-        }
-      });
-
       // Função que atualiza o doughnut a partir dos dados atuais do gráfico de produção
       function updateFreshnessChart() {
         const newData = productionChart.data.datasets[0].data.map(Number);
@@ -1940,58 +1729,6 @@
       console.warn('Erro ao inicializar gráficos (estático):', err);
     }
 
-
-    // 2️⃣ Gráfico de Produção (últimos 7 dias)
-    const productionChart = new Chart(document.getElementById('productionChart'), {
-      type: 'line',
-      data: {
-        labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-        datasets: [{
-          label: 'Produção (unidades)',
-          data: productionData,
-          fill: true,
-          tension: 0.3,
-          backgroundColor: 'rgba(47,122,63,0.12)',
-          borderColor: brandGreen,
-          pointBackgroundColor: brandYellow
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: true, position: 'bottom' },
-          title: { display: true, text: 'Produção dos últimos 7 dias' }
-        },
-        onClick: () => updateFreshnessChart()
-      }
-    });
-
-    // 3️⃣ Gráfico de Ovos Frescos / Estoque (doughnut sincronizado)
-    const freshnessChart = new Chart(document.getElementById('freshnessChart'), {
-      type: 'doughnut',
-      data: {
-        labels: ['Frescos', 'Em estoque'],
-        datasets: [{
-          data: calculateFreshnessData(productionData),
-          backgroundColor: [brandGreen, '#E2E8F0']
-        }]
-      },
-      options: {
-        responsive: true,
-        cutout: '70%',
-        plugins: {
-          legend: { display: true, position: 'bottom' },
-          title: { display: true, text: 'Proporção de ovos frescos e em estoque' },
-          tooltip: {
-            callbacks: {
-              label: ctx => `${ctx.label}: ${ctx.parsed.toFixed(1)}%`
-            }
-          }
-        }
-      }
-    });
-
     // 🔄 Sincronização automática
     function updateFreshnessChart() {
       const newData = productionChart.data.datasets[0].data;
@@ -2004,6 +1741,29 @@
     const mobileBtn = document.getElementById('mobileBtn');
     mobileBtn && mobileBtn.addEventListener('click', () => alert('Menu móvel não configurado — use os links do rodapé por enquanto.'));
   </script>
+  <script>
+    window.addEventListener('load', () => {
+      const brandGreen = getComputedStyle(document.documentElement).getPropertyValue('--brand-green') || '#2F7A3F';
+      new Chart(document.getElementById('nutritionChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Ômega-3', 'Vitaminas (A,E,D)', 'Colesterol'],
+          datasets: [
+            { label: 'Ovo Caipira', data: [9, 8.5, 6.8], backgroundColor: brandGreen },
+            { label: 'Ovo Comum', data: [5, 6, 8], backgroundColor: '#F0C089' }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: { y: { beginAtZero: true } },
+          plugins: { legend: { position: 'bottom' } }
+        }
+      });
+    });
+  </script>
+
 </body>
+
 
 </html>
