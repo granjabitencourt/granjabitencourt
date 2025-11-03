@@ -20,6 +20,56 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 <link href="logo.webp" rel="icon" type="image/webp" />
 <style>
+  /* --- Correções de animações e variáveis --- */
+:root {
+  --brand-dark: #0A3F36;
+  --brand-green: #2F7A3F;
+  --brand-muted: #4D8076;
+  --brand-yellow: #FFC947;
+  --egg-brown: #a15d3f;
+  --bg: #FEFBF6;
+  --brand-light: #fffaf0; /* usado no gradiente */
+  --brand-blue: #1e90ff;
+}
+
+/* animações */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.15); }
+}
+
+.fade-up { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+#como-comprar i { transition: transform 0.3s ease; }
+#como-comprar i:hover { transform: scale(1.2); }
+
+@media (max-width: 1024px) {
+  #heroText { margin-top: 0 !important; }
+  #heroVisual { margin-top: 40px !important; }
+}
+
   /* força a cor do texto do botão específico no hover */
   a.pill[href="#contato"]:hover {
     color: #004400 !important;
@@ -375,11 +425,7 @@
       opacity: 0;
     }
 
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+  
 
   @keyframes blink {
 
@@ -624,7 +670,7 @@
                         Preço
                       </div>
                       <div class="text-xl font-extrabold text-[var(--brand-dark)] mt-1">
-                        R$ 14 / dúzia
+                        R$ 15 / dúzia
                       </div>
                       <div class="text-xs muted mt-2">
                         Embalagem sustentável • Entrega diária
@@ -782,77 +828,51 @@
         </article>
       </div>
     </section>
-    <section
-      class="fade-up card p-8 lg:p-12 mb-12 bg-gradient-to-br from-white via-[var(--brand-light)] to-[#fef9e7] rounded-2xl shadow-md"
-      id="como-comprar">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl font-extrabold text-[var(--brand-dark)]">
-          Como Comprar
-        </h2>
-        <p class="muted mt-3 text-lg">
-          Fazer seu pedido com a Granja Bitencourt é simples e rápido 🐔
-        </p>
+ <!-- SEÇÃO: COMO COMPRAR -->
+<section
+  class="fade-up card p-8 lg:p-12 mb-12 bg-gradient-to-br from-white via-[var(--brand-light)] to-[#fef9e7] rounded-2xl shadow-md"
+  id="como-comprar">
+  <div class="text-center mb-8">
+    <h2 class="text-3xl font-extrabold text-[var(--brand-dark)]">
+      Como Comprar
+    </h2>
+    <p class="muted mt-3 text-lg">
+      Fazer seu pedido com a Granja Bitencourt é simples e rápido 🐔
+    </p>
+  </div>
+  <div class="grid md:grid-cols-4 gap-6 mt-6 text-center">
+    <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+      <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-yellow)] text-[var(--brand-dark)] text-2xl shadow-md mb-4">
+        <i class="fa-brands fa-whatsapp"></i>
       </div>
-      <div class="grid md:grid-cols-3 gap-6 mt-6 text-center">
-        <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
-          <div
-            class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-yellow)] text-[var(--brand-dark)] text-2xl shadow-md mb-4">
-            <i class="fa-brands fa-whatsapp"></i>
-          </div>
-          <h3 class="font-bold text-lg text-[var(--brand-dark)]">
-            1. Entre em contato
-          </h3>
-          <p class="text-gray-600 mt-2 text-sm leading-relaxed">
-            Fale conosco pelo
-            <strong>
-              WhatsApp
-            </strong>
-            .
-          </p>
-        </div>
-        <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
-          <div
-            class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-green)] text-white text-2xl shadow-md mb-4">
-            <i class="fa-solid fa-clipboard-list"></i>
-          </div>
-          <h3 class="font-bold text-lg text-[var(--brand-dark)]">
-            2. Informe o pedido
-          </h3>
-          <p class="text-gray-600 mt-2 text-sm leading-relaxed">
-            Envie a
-            <strong>
-              quantidade desejada
-            </strong>
-            e o
-            <strong>
-              endereço de entrega
-            </strong>
-            .
-          </p>
-        </div>
-        <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
-          <div
-            class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-dark)] text-white text-2xl shadow-md mb-4">
-            <i class="fa-solid fa-truck"></i>
-          </div>
-          <h3 class="font-bold text-lg text-[var(--brand-dark)]">
-            3. Receba com comodidade
-          </h3>
-          <p class="text-gray-600 mt-2 text-sm leading-relaxed">
-            Combinamos o
-            <strong>
-              frete
-            </strong>
-            e o
-            <strong>
-              horário
-            </strong>
-            da entrega para você receber tudo
-            fresquinho.
-          </p>
-        </div>
+      <h3 class="font-bold text-lg text-[var(--brand-dark)]">1. Entre em contato</h3>
+      <p class="text-gray-600 mt-2 text-sm leading-relaxed">Fale conosco pelo <strong>WhatsApp</strong>.</p>
+    </div>
+    <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+      <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-green)] text-white text-2xl shadow-md mb-4">
+        <i class="fa-solid fa-clipboard-list"></i>
       </div>
-    </section>
+      <h3 class="font-bold text-lg text-[var(--brand-dark)]">2. Informe o pedido</h3>
+      <p class="text-gray-600 mt-2 text-sm leading-relaxed">Envie a <strong>quantidade desejada</strong> e o <strong>endereço de entrega</strong>.</p>
+    </div>
+    <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+      <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-dark)] text-white text-2xl shadow-md mb-4">
+        <i class="fa-solid fa-truck"></i>
+      </div>
+      <h3 class="font-bold text-lg text-[var(--brand-dark)]">3. Receba com comodidade</h3>
+      <p class="text-gray-600 mt-2 text-sm leading-relaxed">Combinamos o <strong>frete</strong> e o <strong>horário</strong> da entrega para você receber tudo fresquinho.</p>
+    </div>
+    <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+      <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-blue)] text-white text-2xl shadow-md mb-4">
+        <i class="fa-solid fa-recycle"></i>
+      </div>
+      <h3 class="font-bold text-lg text-[var(--brand-dark)]">4. Devolva a embalagem</h3>
+      <p class="text-gray-600 mt-2 text-sm leading-relaxed">Ao devolver sua <strong>embalagem</strong> na próxima compra, você recebe <strong>R$1 de desconto</strong> por unidade.</p>
+    </div>
+  </div>
+</section>
+
+
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
       <div class="card p-6">
         <h3 class="text-lg font-bold">
