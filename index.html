@@ -21,70 +21,124 @@
 <link href="logo.webp" rel="icon" type="image/webp" />
 <style>
   /* === FORÇAR HERO empilhado no desktop (texto acima da visual) === */
-@media (min-width: 1024px) {
-  /* garante uma coluna no desktop mesmo que outras regras digam o contrário */
-  #heroGrid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: start; }
+  @media (min-width: 1024px) {
 
-  /* remove margens conflitantes que estavam empurrando o hero pra cima/baixo */
-  #heroText, #heroVisual {
-    margin-top: 0 !important;
-    order: unset !important;
+    /* garante uma coluna no desktop mesmo que outras regras digam o contrário */
+    #heroGrid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* remove margens conflitantes que estavam empurrando o hero pra cima/baixo */
+    #heroText,
+    #heroVisual {
+      margin-top: 0 !important;
+      order: unset !important;
+    }
+
+    /* assegura que o texto fique acima da visual e tenha leve separação */
+    #heroText {
+      z-index: 20;
+    }
+
+    #heroVisual {
+      margin-top: 0 !important;
+      z-index: 10;
+    }
   }
-
-  /* assegura que o texto fique acima da visual e tenha leve separação */
-  #heroText { z-index: 20; }
-  #heroVisual { margin-top: 0 !important; z-index: 10; }
-}
 
   /* --- Correções de animações e variáveis --- */
-:root {
-  --brand-dark: #0A3F36;
-  --brand-green: #2F7A3F;
-  --brand-muted: #4D8076;
-  --brand-yellow: #FFC947;
-  --egg-brown: #a15d3f;
-  --bg: #FEFBF6;
-  --brand-light: #fffaf0; /* usado no gradiente */
-  --brand-blue: #1e90ff;
-}
+  :root {
+    --brand-dark: #0A3F36;
+    --brand-green: #2F7A3F;
+    --brand-muted: #4D8076;
+    --brand-yellow: #FFC947;
+    --egg-brown: #a15d3f;
+    --bg: #FEFBF6;
+    --brand-light: #fffaf0;
+    /* usado no gradiente */
+    --brand-blue: #1e90ff;
+  }
 
-/* animações */
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
+  /* animações */
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes blink {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes pulseGlow {
+
+    0%,
+    100% {
+      filter: brightness(1);
+    }
+
+    50% {
+      filter: brightness(1.15);
+    }
+  }
+
+  .fade-up {
     opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
   }
-  to {
-    transform: translateY(0);
+
+  .fade-up.visible {
     opacity: 1;
+    transform: translateY(0);
   }
-}
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
+  #como-comprar i {
+    transition: transform 0.3s ease;
+  }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
+  #como-comprar i:hover {
+    transform: scale(1.2);
+  }
 
-@keyframes pulseGlow {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.15); }
-}
+  @media (max-width: 1024px) {
+    #heroText {
+      margin-top: 0 !important;
+    }
 
-.fade-up { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
-.fade-up.visible { opacity: 1; transform: translateY(0); }
-
-#como-comprar i { transition: transform 0.3s ease; }
-#como-comprar i:hover { transform: scale(1.2); }
-
-@media (max-width: 1024px) {
-  #heroText { margin-top: 0 !important; }
-  #heroVisual { margin-top: 40px !important; }
-}
+    #heroVisual {
+      margin-top: 40px !important;
+    }
+  }
 
   /* força a cor do texto do botão específico no hover */
   a.pill[href="#contato"]:hover {
@@ -401,25 +455,28 @@
 
 
   /* Ajuste visual da seção hero */
-#heroText {
-  margin-top: 100px !important; /* sobe o texto no desktop */
-  animation: slideUp 1s ease-out forwards;
-}
-
-#heroVisual {
-  margin-top: 180px !important; /* desce a parte da logo no desktop */
-  transition: margin 0.4s ease;
-}
-
-/* Ajuste para celular: mantém espaçamento equilibrado */
-@media (max-width: 768px) {
   #heroText {
-    margin-top: 40px !important;
+    margin-top: 100px !important;
+    /* sobe o texto no desktop */
+    animation: slideUp 1s ease-out forwards;
   }
+
   #heroVisual {
-    margin-top: 40px !important;
+    margin-top: 180px !important;
+    /* desce a parte da logo no desktop */
+    transition: margin 0.4s ease;
   }
-}
+
+  /* Ajuste para celular: mantém espaçamento equilibrado */
+  @media (max-width: 768px) {
+    #heroText {
+      margin-top: 40px !important;
+    }
+
+    #heroVisual {
+      margin-top: 40px !important;
+    }
+  }
 
   /* 🔹 Animação suave de entrada */
   to {
@@ -447,207 +504,214 @@
       opacity: 0;
     }
 
-  
 
-  @keyframes blink {
 
-    0%,
-    100% {
-      opacity: 1;
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
     }
 
-    50% {
-      opacity: 0.3;
-    }
-  }
 
 
-
-  /* Fix: ensure "Peça pelo WhatsApp" text remains readable on hover */
-  /* Targets header and mobile menu buttons that link to #contato */
-  #mainHeader a.pill[href="#contato"],
-  #mainHeader a.pill[href="#contato"] *,
-  #mobileMenu a[href="#contato"],
-  #mobileMenu a[href="#contato"] * {
-    color: var(--brand-dark) !important;
-  }
-
-  #mainHeader a.pill[href="#contato"]:hover,
-  #mainHeader a.pill[href="#contato"]:hover *,
-  #mobileMenu a[href="#contato"]:hover,
-  #mobileMenu a[href="#contato"]:hover * {
-    color: #1a1a1a !important;
-    /* texto escuro legível sobre amarelo */
-  }
-
-  @media (max-width: 1024px) {
-    #heroText {
-      margin-top: 0 !important;
+    /* Fix: ensure "Peça pelo WhatsApp" text remains readable on hover */
+    /* Targets header and mobile menu buttons that link to #contato */
+    #mainHeader a.pill[href="#contato"],
+    #mainHeader a.pill[href="#contato"] *,
+    #mobileMenu a[href="#contato"],
+    #mobileMenu a[href="#contato"] * {
+      color: var(--brand-dark) !important;
     }
 
-    #heroVisual {
-      margin-top: 40px !important;
-    }
-  }
-
-  @media (max-width: 768px) {
-    #mobileMenu {
-      position: absolute;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.6);
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      z-index: 9998;
-      overflow-y: auto;
-      padding-top: 20px;
-      display: none;
-      backdrop-filter: blur(6px);
+    #mainHeader a.pill[href="#contato"]:hover,
+    #mainHeader a.pill[href="#contato"]:hover *,
+    #mobileMenu a[href="#contato"]:hover,
+    #mobileMenu a[href="#contato"]:hover * {
+      color: #1a1a1a !important;
+      /* texto escuro legível sobre amarelo */
     }
 
-    #mobileMenu:not(.hidden) {
-      display: flex !important;
+    @media (max-width: 1024px) {
+      #heroText {
+        margin-top: 0 !important;
+      }
+
+      #heroVisual {
+        margin-top: 40px !important;
+      }
     }
 
-    #mobileMenu a {
-      width: 90%;
-      max-width: 320px;
-      background: #fff;
-      color: #000 !important;
-      /* força preto */
-      text-align: center;
-      padding: 14px 0;
-      margin-bottom: 10px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 18px;
-      font-weight: 700;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+    @media (max-width: 768px) {
+      #mobileMenu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.6);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        z-index: 9998;
+        overflow-y: auto;
+        padding-top: 20px;
+        display: none;
+        backdrop-filter: blur(6px);
+      }
+
+      #mobileMenu:not(.hidden) {
+        display: flex !important;
+      }
+
+      #mobileMenu a {
+        width: 90%;
+        max-width: 320px;
+        background: #fff;
+        color: #000 !important;
+        /* força preto */
+        text-align: center;
+        padding: 14px 0;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        font-size: 18px;
+        font-weight: 700;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+      }
+
+      #mobileMenu a:hover {
+        background: #f1f1f1;
+        color: #000 !important;
+        /* mantém preto mesmo no hover */
+      }
     }
 
-    #mobileMenu a:hover {
-      background: #f1f1f1;
-      color: #000 !important;
-      /* mantém preto mesmo no hover */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 7rem;
+        /* adiciona margem interna para compensar o header fixo */
+      }
     }
-  }
-  @media (max-width: 768px) {
-  body {
-    padding-top: 7rem; /* adiciona margem interna para compensar o header fixo */
-  }
-}
-/* ======== MENU MOBILE FULLSCREEN ======== */
-@media (max-width: 768px) {
-  #mobileMenu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh; /* cobre toda a tela */
-    background: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(12px);
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* centraliza os botões */
-    gap: 20px;
-    z-index: 9999;
-    animation: fadeInMenu 0.4s ease;
-  }
 
-  /* exibe o menu quando ativo */
-  #mobileMenu:not(.hidden) {
-    display: flex !important;
-  }
+    /* ======== MENU MOBILE FULLSCREEN ======== */
+    @media (max-width: 768px) {
+      #mobileMenu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        /* cobre toda a tela */
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(12px);
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* centraliza os botões */
+        gap: 20px;
+        z-index: 9999;
+        animation: fadeInMenu 0.4s ease;
+      }
 
-  /* estilo base dos botões */
-  .mobile-btn {
-   .mobile-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  max-width: 320px;
-  padding: 16px 0;
-  border-radius: 9999px;
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center;
-  background: white;
-  color: var(--brand-dark);
-  border: 2px solid var(--brand-yellow);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  transition: all 0.25s ease;
+      /* exibe o menu quando ativo */
+      #mobileMenu:not(.hidden) {
+        display: flex !important;
+      }
 
-  /* 🟡 Ajustes de espaçamento do texto */
-  letter-spacing: 1.5px; /* espaço entre letras */
-  line-height: 1.3;      /* altura da linha */
-}
+      /* estilo base dos botões */
+      .mobile-btn {
+        .mobile-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 80%;
+          max-width: 320px;
+          padding: 16px 0;
+          border-radius: 9999px;
+          font-size: 20px;
+          font-weight: 700;
+          text-align: center;
+          background: white;
+          color: var(--brand-dark);
+          border: 2px solid var(--brand-yellow);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+          transition: all 0.25s ease;
+
+          /* 🟡 Ajustes de espaçamento do texto */
+          letter-spacing: 1.5px;
+          /* espaço entre letras */
+          line-height: 1.3;
+          /* altura da linha */
+        }
 
 
-  .mobile-btn:hover {
-    background: var(--brand-yellow);
-    color: var(--brand-dark);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-  }
+        .mobile-btn:hover {
+          background: var(--brand-yellow);
+          color: var(--brand-dark);
+          transform: translateY(-3px);
+          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+        }
 
-  .mobile-btn:active {
-    transform: scale(0.97);
-  }
+        .mobile-btn:active {
+          transform: scale(0.97);
+        }
 
-  /* botão WhatsApp em destaque */
-  .mobile-btn.whatsapp {
-    background: var(--brand-green);
-    color: #fff;
-    border: none;
-    box-shadow: 0 8px 20px rgba(47, 139, 74, 0.25);
-  }
+        /* botão WhatsApp em destaque */
+        .mobile-btn.whatsapp {
+          background: var(--brand-green);
+          color: #fff;
+          border: none;
+          box-shadow: 0 8px 20px rgba(47, 139, 74, 0.25);
+        }
 
-  .mobile-btn.whatsapp:hover {
-    background: #2f8b4a;
-  }
+        .mobile-btn.whatsapp:hover {
+          background: #2f8b4a;
+        }
 
-  /* botão hamburguer sempre acima do overlay */
-  #mobileMenuBtn {
-    z-index: 10000;
-    position: relative;
-  }
+        /* botão hamburguer sempre acima do overlay */
+        #mobileMenuBtn {
+          z-index: 10000;
+          position: relative;
+        }
 
-  /* animação de entrada */
-  @keyframes fadeInMenu {
-    from {
-      opacity: 0;
-      transform: scale(1.02);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-}
+        /* animação de entrada */
+        @keyframes fadeInMenu {
+          from {
+            opacity: 0;
+            transform: scale(1.02);
+          }
 
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      }
 </style>
 
 <body class="antialiased">
   <script>
-  (function () {
-    const btn = document.querySelector('a.pill[href="#contato"]');
-    if (!btn) return;
-    btn.addEventListener('mouseenter', () => {
-      btn.style.color = '#004400';
-      // aplica também para filhos
-      btn.querySelectorAll('*').forEach(el => el.style.color = '#004400');
-    });
-    btn.addEventListener('mouseleave', () => {
-      // volta para a cor original (usa var CSS se disponível)
-      btn.style.color = getComputedStyle(document.documentElement).getPropertyValue('--brand-dark') || '#222';
-      btn.querySelectorAll('*').forEach(el => el.style.color = '');
-    });
-  })();
-</script>
+    (function () {
+      const btn = document.querySelector('a.pill[href="#contato"]');
+      if (!btn) return;
+      btn.addEventListener('mouseenter', () => {
+        btn.style.color = '#004400';
+        // aplica também para filhos
+        btn.querySelectorAll('*').forEach(el => el.style.color = '#004400');
+      });
+      btn.addEventListener('mouseleave', () => {
+        // volta para a cor original (usa var CSS se disponível)
+        btn.style.color = getComputedStyle(document.documentElement).getPropertyValue('--brand-dark') || '#222';
+        btn.querySelectorAll('*').forEach(el => el.style.color = '');
+      });
+    })();
+  </script>
   <script>
     setTimeout(() => {
       const aviso = document.getElementById('avisoManutencao');
@@ -687,12 +751,12 @@
           class="fa-solid fa-bars"></i></button>
     </div>
     <!-- MENU MOBILE BONITO E FUNCIONAL -->
-<div id="mobileMenu" class="hidden flex-col items-center md:hidden">
-  <a href="#sobre" class="mobile-btn">Sobre</a>
-  <a href="#produtos" class="mobile-btn">Produtos</a>
-  <a href="#sustentabilidade" class="mobile-btn">Sustentabilidade</a>
-  <a href="#contato" class="mobile-btn whatsapp">Peça pelo WhatsApp</a>
-</div>
+    <div id="mobileMenu" class="hidden flex-col items-center md:hidden">
+      <a href="#sobre" class="mobile-btn">Sobre</a>
+      <a href="#produtos" class="mobile-btn">Produtos</a>
+      <a href="#sustentabilidade" class="mobile-btn">Sustentabilidade</a>
+      <a href="#contato" class="mobile-btn whatsapp">Peça pelo WhatsApp</a>
+    </div>
   </header>
   <script>
     // Controle do menu móvel
@@ -786,7 +850,7 @@
                         R$ 15 / dúzia
                       </div>
                       <div class="text-xs muted mt-2">
-                        * Embalagem sustentável, devolva sua embalagem e ganhe de volta  <strong>R$1</strong>
+                        * Embalagem sustentável, devolva sua embalagem e ganhe de volta <strong>R$1</strong>
                       </div>
                     </div>
                     <div class="bg-white p-4 rounded-lg shadow-sm">
@@ -941,49 +1005,56 @@
         </article>
       </div>
     </section>
- <!-- SEÇÃO: COMO COMPRAR -->
-<section
-  class="fade-up card p-8 lg:p-12 mb-12 bg-gradient-to-br from-white via-[var(--brand-light)] to-[#fef9e7] rounded-2xl shadow-md"
-  id="como-comprar">
-  <div class="text-center mb-8">
-    <h2 class="text-3xl font-extrabold text-[var(--brand-dark)]">
-      Como Comprar
-    </h2>
-    <p class="muted mt-3 text-lg">
-      Fazer seu pedido com a Granja Bitencourt é simples e rápido 🐔
-    </p>
-  </div>
-  <div class="grid md:grid-cols-4 gap-6 mt-6 text-center">
-    <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
-      <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-yellow)] text-[var(--brand-dark)] text-2xl shadow-md mb-4">
-        <i class="fa-brands fa-whatsapp"></i>
+    <!-- SEÇÃO: COMO COMPRAR -->
+    <section
+      class="fade-up card p-8 lg:p-12 mb-12 bg-gradient-to-br from-white via-[var(--brand-light)] to-[#fef9e7] rounded-2xl shadow-md"
+      id="como-comprar">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-extrabold text-[var(--brand-dark)]">
+          Como Comprar
+        </h2>
+        <p class="muted mt-3 text-lg">
+          Fazer seu pedido com a Granja Bitencourt é simples e rápido 🐔
+        </p>
       </div>
-      <h3 class="font-bold text-lg text-[var(--brand-dark)]">1. Entre em contato</h3>
-      <p class="text-gray-600 mt-2 text-sm leading-relaxed">Fale conosco pelo <strong>WhatsApp</strong>.</p>
-    </div>
-    <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
-      <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-green)] text-white text-2xl shadow-md mb-4">
-        <i class="fa-solid fa-clipboard-list"></i>
+      <div class="grid md:grid-cols-4 gap-6 mt-6 text-center">
+        <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+          <div
+            class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-yellow)] text-[var(--brand-dark)] text-2xl shadow-md mb-4">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <h3 class="font-bold text-lg text-[var(--brand-dark)]">1. Entre em contato</h3>
+          <p class="text-gray-600 mt-2 text-sm leading-relaxed">Fale conosco pelo <strong>WhatsApp</strong>.</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+          <div
+            class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-green)] text-white text-2xl shadow-md mb-4">
+            <i class="fa-solid fa-clipboard-list"></i>
+          </div>
+          <h3 class="font-bold text-lg text-[var(--brand-dark)]">2. Informe o pedido</h3>
+          <p class="text-gray-600 mt-2 text-sm leading-relaxed">Envie a <strong>quantidade desejada</strong> e o
+            <strong>endereço de entrega</strong>.</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+          <div
+            class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-dark)] text-white text-2xl shadow-md mb-4">
+            <i class="fa-solid fa-truck"></i>
+          </div>
+          <h3 class="font-bold text-lg text-[var(--brand-dark)]">3. Receba com comodidade</h3>
+          <p class="text-gray-600 mt-2 text-sm leading-relaxed">Combinamos o <strong>frete</strong> e o
+            <strong>horário</strong> da entrega para você receber tudo fresquinho.</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+          <div
+            class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-blue)] text-white text-2xl shadow-md mb-4">
+            <i class="fa-solid fa-recycle"></i>
+          </div>
+          <h3 class="font-bold text-lg text-[var(--brand-dark)]">4. Devolva a embalagem</h3>
+          <p class="text-gray-600 mt-2 text-sm leading-relaxed">Ao devolver sua <strong>embalagem</strong> na próxima
+            compra, você recebe <strong>R$1 de desconto</strong> por unidade.</p>
+        </div>
       </div>
-      <h3 class="font-bold text-lg text-[var(--brand-dark)]">2. Informe o pedido</h3>
-      <p class="text-gray-600 mt-2 text-sm leading-relaxed">Envie a <strong>quantidade desejada</strong> e o <strong>endereço de entrega</strong>.</p>
-    </div>
-    <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
-      <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-dark)] text-white text-2xl shadow-md mb-4">
-        <i class="fa-solid fa-truck"></i>
-      </div>
-      <h3 class="font-bold text-lg text-[var(--brand-dark)]">3. Receba com comodidade</h3>
-      <p class="text-gray-600 mt-2 text-sm leading-relaxed">Combinamos o <strong>frete</strong> e o <strong>horário</strong> da entrega para você receber tudo fresquinho.</p>
-    </div>
-    <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
-      <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[var(--brand-blue)] text-white text-2xl shadow-md mb-4">
-        <i class="fa-solid fa-recycle"></i>
-      </div>
-      <h3 class="font-bold text-lg text-[var(--brand-dark)]">4. Devolva a embalagem</h3>
-      <p class="text-gray-600 mt-2 text-sm leading-relaxed">Ao devolver sua <strong>embalagem</strong> na próxima compra, você recebe <strong>R$1 de desconto</strong> por unidade.</p>
-    </div>
-  </div>
-</section>
+    </section>
 
 
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
