@@ -131,21 +131,43 @@ button, a{
         gap: 1.5rem;
         align-items: center;
 
-        /* escondido por padrão */
+        /* escondido */
         display: none;
         box-shadow: 0 1px 20px var(--shadow-color);
+        
         
     }
 
     .nav-links.active{
         display: flex;
+        animation: menutoggle .25s ease forwards;
+    }
+
+    .nav-links:not(.active){
+
     }
 
     .nav-links a{
-    text-decoration: none;
-    font-size: 1.2rem;
+        text-decoration: none;
+        font-size: 1.2rem;
+        
+    }
 }
+
+/* Animação */
+
+@keyframes menutoggle {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
+
 
 
 /* Animação aparecer */
