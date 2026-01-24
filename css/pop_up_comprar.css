@@ -1,0 +1,117 @@
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup {
+  position: relative;
+  z-index: 1000;
+
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+
+  background: var(--brand-white);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px var(--shadow-color);
+  padding: 20px;
+  margin-top: 10vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+.popup-close{   
+  background: none;
+  border: none;
+  margin-right: auto;
+  color: var(--brand-black);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.popup > h2{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.popup-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+.popup-form > h2{
+    font-size: 1.25rem;
+}
+
+.two-inputs{
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 4%;
+}
+
+.two-inputs .form-group{
+    width: 48%;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+
+input, select, textarea{
+    padding: .25rem .2rem;
+    border-radius: 5px;
+    border: 1px solid rgb(209, 209, 209);
+    font-weight: 400;
+    background-color: transparent;
+    font-family: var(--font-text);
+    color: var(--subtitle-color);
+    font-size: 1rem;
+}
+
+.btn-buy, .btn-cancel{
+    width: 49%;
+    height: 50px;
+    font-size: 1.05rem;
+}
+
+.btn-cancel{
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.form-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+
+.hidden{
+    display: none;
+}
+
+.popup{
+    animation: scaleIn .2s ease;
+}
+
+@keyframes scaleIn{
+    from{
+        transform: scale(1.2);
+        opacity: .5;
+    }
+}

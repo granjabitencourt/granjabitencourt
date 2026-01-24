@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granja Bitencourt</title>
+    <link rel="shortcut icon" href="/images/logo granja.png" type="image/x-icon">
+
+    <!-- CSS -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/pop_up_comprar.css">
+    <link rel="stylesheet" href="css/tablet.css">
+    <link rel="stylesheet" href="css/pc.css">
+
+    <!-- JS -->
+
+    <script src="./js/menu.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/pop_up.js" defer></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/images/logo granja.png" alt="Granja Bitencourt">
+            <div>
+                <h4>Granja Bitencourt</h4>
+                <p>Ovos Caipiras - Nova Lima</p>
+            </div>
+        </div>
+        
+
+        <button class="menu-toggle" aria-label="Abrir menu">
+            ☰
+        </button>
+
+        <div class="nav-links">
+            <a href="#product-text">Produtos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#sustentabilidade">Sustentabilidade</a>
+        </div>
+    </nav>
+
+    <!-- POP UP -->
+
+    <section class="popup-overlay hidden">
+
+        <div class="popup">
+
+
+            <button class="popup-close" type="button" aria-label="Fechar">&times;</button>
+
+            <h2 class="popup-title">Pedido</h2>
+
+            <form class="popup-form">
+
+                <!-- PRODUTO / QNT / DATA / DIA SEMANA  -->
+
+                <div class="form-group">
+                    <label for="produto">Produto</label>
+                    <select id="produto" required>
+                        <option value="duzia">Dúzia de ovos</option>
+                        <option value="pente">Pente de ovos (30)</option>
+                        <option value="caixa">Caixa de ovos</option>
+                        <option value="assinatura">Assinatura</option>
+                    </select>
+                </div>
+
+                <div class="two-inputs">
+                    <div class="form-group">
+                        <label for="quantidade">Quantidade</label>
+                        <input type="number" id="quantidade" min="1" value="1" required>
+                    </div>
+
+
+                    <div class="form-group" id="data">
+                        <label for="date">Data de entrega</label>
+                        <input type="date" id="date" required>
+                    </div>
+
+                    <div class="form-group hidden">
+                        <label for="diaSemana">Dia da semana</label>
+                        <select id="diaSemana" required>
+                            <option value="segunda">Segunda-feira</option>
+                            <option value="terca">Terça-feira</option>
+                            <option value="quarta">Quarta-feira</option>
+                            <option value="quinta">Quinta-feira</option>
+                            <option value="sexta">Sexta-feira</option>
+                            <option value="sabado">Sábado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- OVOS POR CAIXA / TEMPO ASSINATURA / TIPO ASSINATURA -->
+
+                <div class="form-group hidden" id="eggsBoxInput">
+                    <label for="ovos-caixa">Ovos por caixa <br>(mín. 60)</label>
+                    <input type="number" id="ovos-caixa" min="60" value="60">
+                </div>
+
+
+                <div class="form-group hidden" id="subscriptionInput">
+                    <label for="assinatura">Tempo de assinatura (semanas)</label>
+                    <input type="number" id="assinatura" value="1" min="1" max="12" placeholder="1 a 12">
+                </div>
+
+                <div class="form-group hidden" id="subscriptionTypeInput">
+                    <label for="tipoAssinatura">Tipo de assinatura</label>
+                    <select id="tipoAssinatura">
+                        <option value="duzia">Dúzia semanal</option>
+                        <option value="pente">Pente semanal (30 ovos)</option>
+                    </select>
+                </div>
+
+                <!-- ENDEREÇO -->
+
+                <div class="form-group">
+                    <label for="rua">Rua</label>
+                    <input type="text" id="rua" placeholder="Ex: Rua Tomás Gonzaga" required>
+                </div>
+
+                <div class="two-inputs">
+                    <div class="form-group">
+                        <label for="numero">Número</label>
+                        <input type="number" id="numero" placeholder="Ex: 123" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bairro">Bairro</label>
+                        <input type="text" id="bairro" placeholder="Ex: Centro" required>
+                    </div>
+                </div>
+
+                <!-- OBS -->
+
+                <div class="form-group">
+                    <label for="obs">Observações</label>
+                    <textarea id="obs" rows="3" placeholder="OBS: "></textarea>
+                </div>
+
+                <h2 id="total">Total: R$00,00</h2>
+                <p>Frete à combinar ( assinatura não possui frete )</p>
+
+                <div class="form-buttons">
+                    <button type="submit" class="button-yellow btn-buy">
+                        Comprar
+                    </button>
+                    <button type="button" class="button-gray btn-cancel popup-close">
+                        Cancelar
+                    </button>
+                </div>
+
+
+            </form>
+        </div>
+    </section>
+
+    <!-- HERO -->
+
+    <section id="hero-section" class="animation-hidden">
+
+        <div id="hero-text">
+            <h1>Ovos frescos de verdade direto do produtor</h1>
+            <h4>Galinhas criadas livres, coleta diária e entrega rápida para Nova Lima. Mais sabor, mais nutrientes e
+                apoio ao produtor local</h4>
+        </div>
+
+        <div id="hero-buttons">
+            <button class="button-yellow" id="heroBuyButton">Comprar</button>
+            <button class="button-gray" onclick="location.href='#sobre'">Sobre</button>
+        </div>
+        
+    </section>
+
+    <!-- MAIN -->
+
+    <main>
+        <h2 id="product-text">Produtos</h2>
+        <h5><span>*</span>Devolução de embalagem gera <span>R$1,00</span> de desconto na próxima compra</h5>
+
+        <section id="product-area">
+
+            <div class="product animation-hidden">
+
+                <img src="images/duzia.jpg" alt="dúzia de ovos" class="produto-image">
+                
+                <div class="produto-content">
+
+                    <h3>Dúzia de Ovos</h3>
+                    <p>Embalagem contendo 12 unidades de ovos caipira</p>
+
+                    <div class="price-and-button">
+
+                        <h4>R$15,00</h4>
+                        <button class="button-yellow" onclick="showPopUp('duzia')">Comprar</button>
+
+                    </div>
+
+                </div>
+                
+            </div>
+
+            <div class="product animation-hidden">
+
+                <img src="images/pente.jpg" alt="pente de ovos" class="produto-image">
+                
+                <div class="produto-content">
+
+                    <h3>Pente de Ovos</h3>
+                    <p>Embalagem contendo 30 unidades de ovos caipira</p>
+
+                    <div class="price-and-button">
+
+                        <h4>R$33,00</h4>
+                        <button class="button-yellow" onclick="showPopUp('pente')">Comprar</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="product animation-hidden">
+
+                <img src="images/caixa.png" alt="caixa de ovos" class="produto-image">
+                
+                <div class="produto-content">
+
+                    <h3>Caixa de Ovos</h3>
+                    <p>Caixa de Ovos caipira com pedido mínimo de 60 ovos, apartir de 90 ovos preço negociável.</p>
+
+                    <div class="price-and-button">
+
+                        <h4>R$1,10/ovo</h4>
+                        <button class="button-yellow" onclick="showPopUp('caixa')">Comprar</button>
+
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="product animation-hidden">
+
+                <img src="images/assinatura.jpg" alt="duas duzias de ovos" class="produto-image">
+                <div class="produto-content">
+
+                    <h3>Assinatura</h3>
+                    <p>Receba dúzia de ovos toda semana em sua casa, escolha o periodo entre 1 e 12 semanas. Entregas
+                        apens em
+                        dias úteis e sábados.</p>
+
+                    <div class="price-and-button">
+
+                        <h4>R$18,00/s</h4>
+                        <button class="button-yellow" onclick="showPopUp('assinatura')">Comprar</button>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- COMO COMPRAR -->
+
+        <section class="como-comprar">
+
+            <h2>Como Comprar?</h2>
+
+            <div class="cards">
+
+                <div class="card animation-hidden">
+                    <div class="bola">
+                        <img src="./images/whatsapp.png" alt="Entre em contato">
+                    </div>
+                    <h3>Entre em contato</h3>
+                    <p>Fale conosco pelo WhatsApp</p>
+                </div>
+
+                <div class="card animation-hidden">
+                    <div class="bola">
+                        <img src="./images/ovos-icon.png" alt="Informe o pedido">
+                    </div>
+                    <h3>Informe o pedido</h3>
+                    <p>Envie a quantidade desejada e o endereço de entrega</p>
+                </div>
+
+                <div class="card animation-hidden">
+                    <div class="bola">
+                        <img src="./images/Casa.png" alt="Receba com comodidade">
+                    </div>
+                    <h3>Receba em casa</h3>
+                    <p>Combinamos o frete e o horário da entrega para você receber tudo fresquinho</p>
+                </div>
+                <div class="card animation-hidden">
+                    <div class="bola">
+                        <img src="./images/reusable.png" alt="Receba com comodidade">
+                    </div>
+                    <h3>Devolva a embalagem</h3>
+                    <p>1,00R$ de desconto por embalagem devolvida
+                    </p>
+                </div>
+
+            </div>
+        
+        </section>
+
+        <!-- GRAFICOS -->
+
+        <section id="graficosection">
+
+            <div class="grafico animation-hidden">
+                <h2>Comparativo de preço</h2>
+                <div>
+                    <canvas id="priceChart"></canvas>
+                </div>
+            </div>
+
+            <div class="grafico animation-hidden">
+                <h2>Comparativo Nutricional</h2>
+                <div>
+                    <canvas id="nutriChart"></canvas>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SOBRE -->
+
+        <section class="sobre animation-hidden" id="sobre">
+
+            <h2>Sobre</h2>
+
+            <div class="sobre-area">
+
+                <img src="images/imagem-galinhas.webp" alt="Galinhas ">
+                
+                <div>
+                    <div class="sobre-content">
+                        <h3>Granja Bitencourt</h3>
+                        
+                        <p>A Granja Bitencourt atua em Nova Lima - MG , produzindo ovos caipiras com foco no bem-estar
+                            animal, na qualidade e na sustentabilidade.<br> <br>
+                            Cada etapa do nosso trabalho é guiada por um manual interno de boas práticas , que
+                            estabelece padrões de manejo responsável, biossegurança, rastreabilidade e gestão
+                            financeira, garantindo uma produção ética, segura e constante. <br><br>
+                            Nosso compromisso é entregar ovos sempre frescos e saudáveis, mantendo a confiança de quem
+                            valoriza alimentos de origem consciente.</p>
+
+                        <div id="manual-area">
+                        
+                            <p>Para conhecer mais sobre nossos processos, visite nossa sede ou baixe o nosso manual</p>
+                            <div><a download href="Manual Granja Bitencourt.docx">Baixar Manual GB<img src="./images/dowload.png"alt="dowload"></a>
+                                <button class="whatts-manual" onclick="goToZap()"><img src="./images/whattsapp-verde.png"
+                                        alt="whattsapp"></button></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- LINHAGEM -->
+
+        <section class="sobre animation-hidden">
+
+            <h2>Linhagem de nossas Galinhas</h2>
+
+            <div class="sobre-area">
+            
+                <img src="https://granjabitencourt.github.io/granjabitencourt/1.webp" alt="Galinhas Isa Brown">
+                
+                <div>
+
+                    <div class="sobre-content">
+
+                        <h3>Galinha Isa Brown</h3>
+
+                        <p>Na Granja Bitencourt, trabalhamos com a linhagem Isa Brown , reconhecida mundialmente pela
+                            sua alta produtividade , resistência e pela qualidade superior dos ovos .<br> <br>
+                            As galinhas Isa Brown são conhecidas por sua docilidade e ótima adaptação ao manejo caipira, garantindo bem-estar animal e excelente desempenho em sistemas livres. <br><br>
+                            O resultado são ovos com gema mais intensa , cascas firmes e alto valor nutricional , ideais
+                            para quem valoriza sabor e qualidade natural.O resultado são ovos com gema mais intensa ,
+                            cascas firmes e alto valor nutricional , ideais para quem valoriza sabor e qualidade
+                            natural.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SUSTENTABILIDADE -->
+
+        <section id="sustentabilidade">
+
+            <h2>Sustentabilidade</h2>
+            <p>Adotamos práticas de biossegurança, reaproveitamento de cama e compostagem para reduzir impacto ambiental</p>
+
+            <div class="sust-area">
+
+                <div class="sust-item animation-hidden">
+                    <div class="sust-icon"><img src="images/compostagem.png" alt="Compostagem"></div>
+                    <h3>Compostagem</h3>
+                    <p>Transformamos cama em adubo seguro para hortas locais</p>
+                </div>
+
+                <div class="sust-item animation-hidden">
+                    <div class="sust-icon"><img src="images/economiacircular.png" alt="Economia Circular"></div>
+                    <h3>Economia Circular</h3>
+                    <p>Prioridade a fornecedores locais e embalagens reutilizáveis</p>
+                </div>
+
+                <div class="sust-item animation-hidden">
+                    <div class="sust-icon"><img src="images/saudeanimal.png" alt="Saúde Animal"></div>
+                    <h3>Saúde animal</h3>
+                    <p>Boas práticas e monitoramento diário para aves saudáveis</p>
+                </div>
+
+                <div class="sust-item animation-hidden    ">
+                    <div class="sust-icon"><img src="images/transparencia.png" alt="Transparência"></div>
+                    <h3>Transparência</h3>
+                    <p>Relatórios e controles internos conforme o manual da granja</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- Coluna 1 -->
+            <div class="footer-col">
+                <h3 class="footer-title">Granja Bitencourt</h3>
+                <p class="footer-text">
+                    Produzimos ovos caipiras frescos com cuidado e qualidade em Nova Lima - MG.
+                </p>
+            </div>
+
+            <!-- Coluna 2 -->
+            <div class="footer-col">
+                <h3 class="footer-title">Contato</h3>
+
+                <ul class="footer-list">
+                    <li> (31) 99660-5864</li>
+                    <li> bitencourtgranja@gmail.com</li>
+                    <li> Nova Lima - MG</li>
+                    <li> Atendimento: 8h às 17h</li>
+                </ul>
+            </div>
+
+            <!-- Coluna 3 -->
+            <div class="footer-col">
+                <h3 class="footer-title">Siga-nos</h3>
+
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/granjabitencourt?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram"><img src="images/instagram-brands-solid-full.svg" alt=""></a>
+                    <a href="https://wa.me/5531996605864" aria-label="WhatsApp"><img
+                            src="images/whatsapp-brands-solid-full.svg" alt=""></a>
+                    <a href="mailto:bitencourtgranja@gmail.com" aria-label="Email"><img
+                            src="images/envelope-regular-full.svg" alt=""></a>
+                    <a href="https://www.youtube.com/@GranjaBitencourt" aria-label="YouTube"><img src="images/youtube-brands-solid-full.svg" alt=""></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Granja Bitencourt — Todos os direitos reservados.
+        </div>
+    </footer>
+</body>
+
+</html>
