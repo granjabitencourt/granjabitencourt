@@ -143,10 +143,6 @@ button, a{
         animation: menutoggle .25s ease forwards;
     }
 
-    .nav-links:not(.active){
-
-    }
-
     .nav-links a{
         text-decoration: none;
         font-size: 1.2rem;
