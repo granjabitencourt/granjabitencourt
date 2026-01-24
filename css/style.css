@@ -17,6 +17,7 @@ nav {
     align-items: center;
     justify-content: center;
     padding: 15px 5vw;
+    background-color: #f1efea;
     border-bottom: 1px solid var(--shadow-color);
 }
 
@@ -319,7 +320,8 @@ main > h5 > span:first-child {
 }
 
 .sobre-content > p{
-    font-size: .9rem;  
+    font-size: .9rem;
+    letter-spacing: 1px;  
 }
 
 #manual-area{
@@ -341,7 +343,7 @@ main > h5 > span:first-child {
 
 #manual-area div a{
     padding: .5rem 1rem .5rem 1.5rem;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.05);
     border: 1px solid #b1b1b1;
     width: fit-content;
     font-weight: 500;
@@ -381,6 +383,7 @@ main > h5 > span:first-child {
     width: 80vw;
     margin:0 auto 4vh;
     font-size: 1rem;
+    
 }
 
 .sust-area{
