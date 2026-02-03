@@ -77,6 +77,7 @@ nav div a {
     flex-direction: column;
     text-align: center;
     height: 90vh;
+    max-height: 1000px;
 }
 
 #hero-text {
