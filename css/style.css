@@ -19,6 +19,7 @@ nav {
     padding: 15px 5vw;
     background-color: #f1efea;
     border-bottom: 1px solid var(--shadow-color);
+    min-height: fit-content;
 }
 
 nav > img{
@@ -298,6 +299,10 @@ main > h5 > span:first-child {
 .sobre-area{
     display: flex;
     flex-direction: column;
+    background-color: var(--brand-white);
+    box-shadow: 0 3px 10px var(--shadow-color);
+    border-radius: 10px;
+    padding: 1rem .6rem;
     width: 90vw;
     height: fit-content;
     margin: 0 auto;
@@ -305,8 +310,9 @@ main > h5 > span:first-child {
 }
 
 .sobre-area > img{
-    width: 100%;
+    width: 96%;
     height: 90vw;
+    margin: auto;
     border-radius: 10px;
 }
 
@@ -314,6 +320,10 @@ main > h5 > span:first-child {
     display: flex;
     flex-direction: column;
     gap: 1vh;
+    max-width: 96%;
+    margin: auto;
+    justify-content: center;
+    
 }
 
 .sobre-content h3{
@@ -344,8 +354,8 @@ main > h5 > span:first-child {
 
 #manual-area div a{
     padding: .5rem 1rem .5rem 1.5rem;
-    background-color: rgba(0, 0, 0, 0.05);
-    border: 1px solid #b1b1b1;
+    
+    border: 1px solid rgba(0, 0, 0, 0.25);
     width: fit-content;
     font-weight: 500;
     font-size: 1rem;
@@ -503,7 +513,7 @@ main > h5 > span:first-child {
     color: var(--subtitle-color);
 }
 
-/* 📱 Responsividade */
+/* Responsividade do footer */
 @media (max-width: 900px) {
     .footer-container {
         grid-template-columns: 1fr 1fr;
@@ -520,7 +530,3 @@ main > h5 > span:first-child {
         justify-content: center;
     }
 }
-
-
-
-

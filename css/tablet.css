@@ -166,6 +166,7 @@
         width: min(85vw, 1200px);
         display: flex;
         gap: clamp(1.5rem, 3vw, 3rem);
+        padding: 1rem ;
         align-items: flex-start;
         flex-direction: row;
         margin: 0 auto;
@@ -174,6 +175,7 @@
     .sobre-area>img {
         flex: 0 0 calc(50% - 0.5rem);
         height: auto;
+        margin: 0;
         max-height: 480px;
         object-fit: cover;
         border-radius: 12px;

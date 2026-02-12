@@ -36,6 +36,7 @@
 
     #product-area {
         width: 80vw;
+        min-height: 1000px ;
         max-width: calc(4 * 250px + 3 * 1rem);
         justify-content: space-between;
         gap: 1rem;
@@ -45,7 +46,10 @@
     .product {
         width: 30%;
         max-height: 500px;
-        
+    }
+
+    .product:last-child {
+        margin: auto;
     }
 
     .product img {

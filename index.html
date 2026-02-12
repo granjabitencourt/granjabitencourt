@@ -483,6 +483,23 @@
             © 2026 Granja Bitencourt — Todos os direitos reservados.
         </div>
     </footer>
+<!-- RETIRAR POP UP -->
+    <div id="popup-manutencao" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-icon">⚠️</div>
+        <h3>Aviso Importante</h3>
+        <p>Estamos trabalhando em nosso site para uma melhor experiência.</p>
+        <button onclick="fecharPopup()" class="button-yellow">Entendi</button>
+    </div>
+</div>
+<!-- RETIRAR POP UP -->
 </body>
-
+<!-- RETIRAR POP UP -->
+<script>
+        function fecharPopup() {
+            document.getElementById('popup-manutencao').style.display = 'none';
+        }
+    </script>
+</body>
+<!-- RETIRAR POP UP -->
 </html>
