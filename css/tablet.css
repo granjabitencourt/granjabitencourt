@@ -1,5 +1,4 @@
-
-@media (min-width: 768px) {
+media (min-width: 768px) {
 
     /* Hero section */
 
@@ -581,4 +580,5 @@
     .sust-item:nth-child(4){
         transition-delay: 200ms;
     }
+
 }
